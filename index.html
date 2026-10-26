@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Professional Pen | Screenwriting Coaching, Script Notes &amp; Community</title>
+    <meta name="description" content="Script notes, screenwriting workbooks and a writing community from former TV executive Shannan E. Johnson. For TV and film writers ready to finish, fix and pitch.">
+    <link rel="icon" href="images/brand/tpp-logo.png" type="image/png">
+
+    <!-- Link previews (texts, social posts). Image URLs must be absolute, so these
+         assume the site lives at theprofessionalpen.com -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="The Professional Pen">
+    <meta property="og:title" content="The Professional Pen | Screenwriting Coaching, Script Notes &amp; Community">
+    <meta property="og:description" content="Script notes, screenwriting workbooks and a writing community from former TV executive Shannan E. Johnson.">
+    <meta property="og:url" content="https://www.theprofessionalpen.com/">
+    <meta property="og:image" content="https://www.theprofessionalpen.com/images/brand/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Shannan E. Johnson and the headline: Hollywood's a gated community. We've got the passcode.">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preload" href="fonts/big-shoulders-display-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/public-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" as="image" href="images/hero/coaches-m.webp" type="image/webp" media="(max-width: 47.99rem)">
+    <link rel="preload" as="image" href="images/hero/coaches.webp" type="image/webp" media="(min-width: 48rem)">
+
+    <link rel="stylesheet" href="css/vendor/lenis.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="javascript/vendor/lenis.min.js" defer></script>
+    <script src="javascript/smooth-scroll.js" defer></script>
+    <script src="javascript/global.js" defer></script>
+    <script src="javascript/script.js" defer></script>
+</head>
+<body>
+    <span id="top-of-page"></span>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- ===== Announcement bar ===== -->
+    <aside class="announcement" aria-label="Announcement">
+        <p class="container announcement-text">
+            <span class="announcement-tag">Now open</span>
+            <span>The First 15 Script Competition</span>
+            <a href="https://www.theprofessionalpen.com/script-competition" target="_blank" rel="noopener">Submit your script<span class="visually-hidden"> (opens in a new tab)</span></a>
+        </p>
+    </aside>
+
+    <!-- ===== Header: full-width white bar ===== -->
+    <header class="site-header" id="header">
+        <div class="header-bar">
+            <div class="container header-inner">
+                <a class="brand" href="index.html">
+                    <picture>
+                        <source type="image/webp" srcset="images/brand/tpp-logo.webp">
+                        <img class="brand-logo" src="images/brand/tpp-logo.png" alt="" width="128" height="128" decoding="async">
+                    </picture>
+                    <span class="brand-name">The Professional Pen</span>
+                </a>
+
+                <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+                    <span class="menu-toggle-bars" aria-hidden="true"></span>
+                    <span class="visually-hidden">Menu</span>
+                </button>
+
+                <nav class="site-menu" id="site-menu" aria-label="Primary">
+                    <ul class="nav-list">
+                        <li><a class="nav-link" href="#offers">Offers</a></li>
+                        <li><a class="nav-link" href="#verdict">Who it&rsquo;s for</a></li>
+                        <li><a class="nav-link" href="#stories">Success stories</a></li>
+                        <li><a class="nav-link" href="#about">About</a></li>
+                        <li><a class="nav-link" href="#faq">FAQ</a></li>
+                        <li><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                    <div class="menu-contact">
+                        <div class="menu-contact-label">Questions? Get in touch</div>
+                        <a class="menu-contact-link" href="mailto:info@theprofessionalpen.com">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6 8.5-6"/></svg>
+                            info@theprofessionalpen.com
+                        </a>
+                    </div>
+                    <a class="btn btn-primary nav-cta" href="#chat">Book a 15-min chat</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- ===== Hero: centered headline over drifting green particles, the three coaches below ===== -->
+        <section class="hero" aria-labelledby="hero-title">
+            <!-- Background photos: darkened, crossfading every few seconds (script.js) -->
+            <div class="hero-slides" aria-hidden="true">
+                <picture class="hero-slide is-active">
+                    <source type="image/webp" media="(min-width: 48rem)" srcset="images/hero/hero-film-set.webp">
+                    <source type="image/webp" srcset="images/hero/hero-film-set-m.webp">
+                    <source media="(min-width: 48rem)" srcset="images/hero/hero-film-set.jpg">
+                    <img src="images/hero/hero-film-set-m.jpg" alt="" width="1600" height="900" decoding="async">
+                </picture>
+                <picture class="hero-slide">
+                    <source type="image/webp" media="(min-width: 48rem)" data-srcset="images/hero/hero-writers-room.webp">
+                    <source type="image/webp" data-srcset="images/hero/hero-writers-room-m.webp">
+                    <source media="(min-width: 48rem)" data-srcset="images/hero/hero-writers-room.jpg">
+                    <img data-src="images/hero/hero-writers-room-m.jpg" alt="" width="1600" height="900" decoding="async">
+                </picture>
+                <picture class="hero-slide">
+                    <source type="image/webp" media="(min-width: 48rem)" data-srcset="images/hero/hero-typewriter.webp">
+                    <source type="image/webp" data-srcset="images/hero/hero-typewriter-m.webp">
+                    <source media="(min-width: 48rem)" data-srcset="images/hero/hero-typewriter.jpg">
+                    <img data-src="images/hero/hero-typewriter-m.jpg" alt="" width="1600" height="900" decoding="async">
+                </picture>
+                <picture class="hero-slide">
+                    <source type="image/webp" media="(min-width: 48rem)" data-srcset="images/hero/hero-theater.webp">
+                    <source type="image/webp" data-srcset="images/hero/hero-theater-m.webp">
+                    <source media="(min-width: 48rem)" data-srcset="images/hero/hero-theater.jpg">
+                    <img data-src="images/hero/hero-theater-m.jpg" alt="" width="1600" height="900" decoding="async">
+                </picture>
+            </div>
+            <canvas class="particles" aria-hidden="true"></canvas>
+
+            <div class="container hero-inner">
+                <div class="hero-content">
+                    <p class="slugline slugline--center">INT. THE PROFESSIONAL PEN &ndash; DAY</p>
+                    <h1 class="hero-title" id="hero-title">Write better stories. <span class="hero-title-accent">Faster.<svg class="hero-underline" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 16C58 7 132 4 200 8c34 2 64 5 92 10" pathLength="1"/></svg></span></h1>
+                    <p class="hero-text">Script notes, screenwriting workbooks and a writing community from former TV exec Shannan&nbsp;E.&nbsp;Johnson and her team of Story Experts. For TV and film writers ready to finish, fix and pitch.</p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="#offers">Explore our offers</a>
+                        <a class="btn btn-secondary" href="#chat">Book a 15-min chat</a>
+                    </div>
+                </div>
+
+                <div class="hero-stage">
+                    <figure class="hero-team">
+                        <picture>
+                            <source type="image/webp" media="(min-width: 48rem)" srcset="images/hero/coaches.webp">
+                            <source type="image/webp" srcset="images/hero/coaches-m.webp">
+                            <source media="(min-width: 48rem)" srcset="images/hero/coaches.png">
+                            <img class="hero-team-photo" src="images/hero/coaches-m.png" alt="The three Story Experts of The Professional Pen" width="840" height="1163" fetchpriority="high" decoding="async">
+                        </picture>
+                        <figcaption class="hero-team-caption">Carlton L. Allen &middot; <strong>Shannan E. Johnson, founder</strong> &middot; PAGES Matam</figcaption>
+                    </figure>
+
+                    <!-- Floating cards around the coaches (drift gently; sit in the flow on phones) -->
+                    <div class="float-card float-note" aria-hidden="true">
+                        <span class="float-note-page">Pg. 12</span>
+                        This twist lands. Keep it.
+                    </div>
+                    <figure class="float-card float-quote">
+                        <blockquote>
+                            <p>&ldquo;I won&rsquo;t make a move without TPP&rsquo;s services. They&rsquo;re THAT good.&rdquo;</p>
+                        </blockquote>
+                        <figcaption><strong>Craig R.</strong> Showrunner, <cite>Monogamy</cite></figcaption>
+                    </figure>
+                    <div class="float-card float-tag">
+                        <span class="float-tag-dot" aria-hidden="true"></span>
+                        Page-by-page notes &middot; 14-business-day turnaround
+                    </div>
+                </div>
+            </div>
+
+            <!-- Film strip: results, client wins and partners scroll past (script.js duplicates the list for a seamless loop) -->
+            <div class="film-strip">
+                <p class="visually-hidden">Our writers&rsquo; results, wins and partners</p>
+                <div class="film-strip-track">
+                    <ul class="film-strip-list">
+                        <li>400+ Competition placements</li>
+                        <li>85 Winners &amp; fellows</li>
+                        <li>60 Staffed &amp; repped</li>
+                        <li>Disney Writing Program</li>
+                        <li><cite>Reasonable Doubt</cite></li>
+                        <li><cite>Monogamy</cite> series renewal</li>
+                        <li>Gotham Creators to Watch</li>
+                        <li>The Syfy Channel</li>
+                        <li>Amazon Prime Studios</li>
+                        <li>FOX Writers Incubator</li>
+                        <li>ScreenCraft</li>
+                        <li>Hallmark Media</li>
+                        <li>Stage 32</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Offers: the three ways to work with TPP, laid out as a path ===== -->
+        <section class="offers" id="offers" aria-labelledby="offers-title">
+            <svg class="divider" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <g fill="currentColor">
+                    <path d="M0 0v95c51-40 134.5-65.3 238-55 65 6.5 103.8 14.8 141 21.4C416.3 78 452 93 511 93s99.5-20.5 138.6-41c39.1-10.5 76.9-21 130.4-21 113 0 136.8 2.8 220 28V0H0Z" opacity=".5"/>
+                    <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z" opacity=".5"/>
+                    <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z"/>
+                </g>
+            </svg>
+
+            <div class="container">
+                <div class="section-header">
+                    <p class="slugline slugline--center slugline--on-light">EXT. YOUR SCRIPT &ndash; ANY STAGE</p>
+                    <h2 class="section-title" id="offers-title">Wherever your script is, <span class="title-mark">start here.<svg class="title-underline" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 16C58 7 132 4 200 8c34 2 64 5 92 10" pathLength="1"/></svg></span></h2>
+                    <p class="section-text">Three ways to work with TPP, one for each stage of the writing journey. Pick the one that matches where you are today.</p>
+                </div>
+
+                <ul class="offers-grid" id="offers-grid">
+                    <li class="offer-card">
+                        <div class="offer-media">
+                            <picture>
+                                <source type="image/webp" media="(min-width: 64rem)" srcset="images/offers/workbooks.webp">
+                                <source type="image/webp" srcset="images/offers/workbooks-m.webp">
+                                <source media="(min-width: 64rem)" srcset="images/offers/workbooks.jpg">
+                                <img src="images/offers/workbooks-m.jpg" alt="A screenwriting workbook and story outline cards on a desk" width="800" height="600" loading="lazy" decoding="async">
+                            </picture>
+                        </div>
+                        <div class="offer-body">
+                            <img class="offer-icon" src="images/offers/step-1.png" alt="" width="192" height="192" loading="lazy" decoding="async">
+                            <span class="offer-number" data-num="01" aria-hidden="true"></span>
+                            <p class="offer-step">Step 1 &middot; Plan it</p>
+                            <h3 class="offer-title">Workbooks</h3>
+                            <p class="offer-question">Have an idea but no plan?</p>
+                            <p class="offer-text">The Idea to Script Starter Kit walks you from FADE IN to THE END, so the blank page never feels intimidating again.</p>
+                            <ul class="offer-points">
+                                <li>Structure, character and outlining lessons</li>
+                                <li>Beat sheet and outline templates with samples</li>
+                                <li>Half-hour, one-hour and feature kits</li>
+                            </ul>
+                            <div class="offer-footer">
+                                <p class="offer-price"><span class="offer-price-label">From</span> $59</p>
+                                <a class="btn btn-primary offer-btn" href="https://www.theprofessionalpen.com/workbooks">Get a workbook<span class="visually-hidden">: Workbooks</span></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="offer-card offer-card--featured">
+                        <div class="offer-media">
+                            <picture>
+                                <source type="image/webp" media="(min-width: 64rem)" srcset="images/offers/development-notes.webp">
+                                <source type="image/webp" srcset="images/offers/development-notes-m.webp">
+                                <source media="(min-width: 64rem)" srcset="images/offers/development-notes.jpg">
+                                <img src="images/offers/development-notes-m.jpg" alt="Script pages marked up with green notes" width="800" height="600" loading="lazy" decoding="async">
+                            </picture>
+                            <span class="offer-badge">Signature service</span>
+                        </div>
+                        <div class="offer-body">
+                            <img class="offer-icon" src="images/offers/step-2.png" alt="" width="192" height="192" loading="lazy" decoding="async">
+                            <span class="offer-number" data-num="02" aria-hidden="true"></span>
+                            <p class="offer-step">Step 2 &middot; Fix it</p>
+                            <h3 class="offer-title">Development Notes</h3>
+                            <p class="offer-question">Finished a draft? Is it ready?</p>
+                            <p class="offer-text">Studio-level, page-by-page notes from a hand-picked Story Expert, with a clear plan for your rewrite.</p>
+                            <ul class="offer-points">
+                                <li>Notes on story, structure and character</li>
+                                <li>A Pass, Needs Development or Consider verdict</li>
+                                <li>14-business-day turnaround, pay later available</li>
+                            </ul>
+                            <div class="offer-footer">
+                                <p class="offer-price"><span class="offer-price-label">From</span> $139</p>
+                                <a class="btn btn-primary offer-btn" href="https://www.theprofessionalpen.com/development-notes">Submit your script<span class="visually-hidden">: Development Notes</span></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="offer-card">
+                        <div class="offer-media">
+                            <picture>
+                                <source type="image/webp" media="(min-width: 64rem)" srcset="images/offers/community.webp">
+                                <source type="image/webp" srcset="images/offers/community-m.webp">
+                                <source media="(min-width: 64rem)" srcset="images/offers/community.jpg">
+                                <img src="images/offers/community-m.jpg" alt="Writers laughing together around a table read" width="800" height="600" loading="lazy" decoding="async">
+                            </picture>
+                        </div>
+                        <div class="offer-body">
+                            <img class="offer-icon" src="images/offers/step-3.png" alt="" width="192" height="192" loading="lazy" decoding="async">
+                            <span class="offer-number" data-num="03" aria-hidden="true"></span>
+                            <p class="offer-step">Step 3 &middot; Grow it</p>
+                            <h3 class="offer-title">The Social</h3>
+                            <p class="offer-question">Tired of writing alone?</p>
+                            <p class="offer-text">Our writing community, where you can ask a former TV exec your questions and grow with writers who get it.</p>
+                            <ul class="offer-points">
+                                <li>Direct access to Shannan E. Johnson</li>
+                                <li>Writers at every level, from first draft to staffed</li>
+                                <li>Courses from The Academy live here too</li>
+                            </ul>
+                            <div class="offer-footer">
+                                <p class="offer-price"><span class="offer-price-label">Less than</span> a movie ticket</p>
+                                <a class="btn btn-primary offer-btn" href="https://www.skool.com/screenwriters" target="_blank" rel="noopener">Join the community<span class="visually-hidden">: The Social (opens in a new tab)</span></a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="offers-swipe" aria-hidden="true">
+                    <span class="offers-swipe-hint">Swipe to see all three</span>
+                    <span class="offers-dots"><span class="offers-dot is-active"></span><span class="offers-dot"></span><span class="offers-dot"></span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Greenlight or Pass: who TPP is (and isn't) for. Visitors tick the
+             lines that fit them and a verdict meter fills up (script.js) ===== -->
+        <section class="verdict" id="verdict" aria-labelledby="verdict-title">
+            <canvas class="particles" aria-hidden="true"></canvas>
+            <svg class="divider divider--light" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <g fill="currentColor">
+                    <path d="M0 0v95c51-40 134.5-65.3 238-55 65 6.5 103.8 14.8 141 21.4C416.3 78 452 93 511 93s99.5-20.5 138.6-41c39.1-10.5 76.9-21 130.4-21 113 0 136.8 2.8 220 28V0H0Z" opacity=".5"/>
+                    <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z" opacity=".5"/>
+                    <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z"/>
+                </g>
+            </svg>
+
+            <div class="container">
+                <div class="section-header">
+                    <p class="slugline slugline--center">INT. DEVELOPMENT MEETING &ndash; DAY</p>
+                    <h2 class="section-title section-title--on-dark" id="verdict-title">Is TPP <span class="title-mark">right for you?<svg class="title-underline" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 16C58 7 132 4 200 8c34 2 64 5 92 10" pathLength="1"/></svg></span></h2>
+                    <p class="section-text section-text--on-dark">Every script gets a verdict. So do we. Here&rsquo;s who we built The Professional Pen for, and who we didn&rsquo;t.</p>
+                </div>
+
+                <div class="verdict-grid">
+                    <!-- Greenlight: an interactive checklist -->
+                    <div class="verdict-card verdict-card--greenlight" id="greenlight" role="group" aria-labelledby="greenlight-title">
+                        <svg class="clapper" viewBox="0 0 64 56" aria-hidden="true" focusable="false">
+                            <g class="clapper-arm"><path d="M4 14 56 4l2 9L6 23z"/><path class="clapper-stripes" d="M14 12l8 9M28 9.5l8 9M42 7l8 9"/></g>
+                            <rect x="5" y="24" width="54" height="30" rx="2"/>
+                            <path class="clapper-stripes" d="M5 31h54"/>
+                        </svg>
+                        <span class="verdict-badge">&check; Greenlight</span>
+                        <h3 class="verdict-title" id="greenlight-title">TPP is for you if&hellip;</h3>
+                        <p class="verdict-hint">Tap everything that sounds like you.</p>
+                        <ul class="verdict-list">
+                            <li class="verdict-item">
+                                <label class="verdict-check">
+                                    <input type="checkbox" class="verdict-input">
+                                    <span class="verdict-box" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" pathLength="1"/></svg></span>
+                                    <span class="verdict-label">You live for storytelling and want to get better at it</span>
+                                </label>
+                            </li>
+                            <li class="verdict-item">
+                                <label class="verdict-check">
+                                    <input type="checkbox" class="verdict-input">
+                                    <span class="verdict-box" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" pathLength="1"/></svg></span>
+                                    <span class="verdict-label">You want to write professionally, not just as a hobby</span>
+                                </label>
+                            </li>
+                            <li class="verdict-item">
+                                <label class="verdict-check">
+                                    <input type="checkbox" class="verdict-input">
+                                    <span class="verdict-box" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" pathLength="1"/></svg></span>
+                                    <span class="verdict-label">You feel stuck and you're ready for a real plan</span>
+                                </label>
+                            </li>
+                            <li class="verdict-item">
+                                <label class="verdict-check">
+                                    <input type="checkbox" class="verdict-input">
+                                    <span class="verdict-box" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5" pathLength="1"/></svg></span>
+                                    <span class="verdict-label">You want honest notes and someone to keep you accountable</span>
+                                </label>
+                            </li>
+                        </ul>
+
+                        <div class="verdict-meter">
+                            <div class="verdict-meter-top">
+                                <span class="verdict-meter-label">Your verdict</span>
+                                <span class="verdict-meter-count" id="verdict-count">0/4</span>
+                            </div>
+                            <div class="verdict-bar" aria-hidden="true"><span class="verdict-bar-fill"></span></div>
+                            <p class="verdict-status" id="verdict-status" aria-live="polite">Check what sounds like you.</p>
+                        </div>
+                        <div class="verdict-confetti" aria-hidden="true"></div>
+                    </div>
+
+                    <!-- Pass -->
+                    <div class="verdict-card verdict-card--pass" role="group" aria-labelledby="pass-title">
+                        <span class="verdict-stamp" aria-hidden="true"></span>
+                        <span class="verdict-badge verdict-badge--pass">&times; Pass</span>
+                        <h3 class="verdict-title" id="pass-title">TPP isn&rsquo;t for you if&hellip;</h3>
+                        <p class="verdict-hint">No hard feelings. We&rsquo;re just not the right fit (yet).</p>
+                        <ul class="verdict-list">
+                            <li class="verdict-item verdict-item--pass">
+                                <span class="verdict-x" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></span>
+                                <span class="verdict-label">You want validation, not feedback</span>
+                            </li>
+                            <li class="verdict-item verdict-item--pass">
+                                <span class="verdict-x" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></span>
+                                <span class="verdict-label">You're shopping for an agent, manager or buyer</span>
+                            </li>
+                            <li class="verdict-item verdict-item--pass">
+                                <span class="verdict-x" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></span>
+                                <span class="verdict-label">You aren't open to learning or rewriting</span>
+                            </li>
+                            <li class="verdict-item verdict-item--pass">
+                                <span class="verdict-x" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></span>
+                                <span class="verdict-label">You want someone to write it for you</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="verdict-cta">
+                    <p class="verdict-cta-text">Sounds like you?</p>
+                    <div class="verdict-cta-actions">
+                        <a class="btn btn-primary" href="#offers">Explore our offers</a>
+                        <a class="btn btn-secondary" href="#chat">Book a 15-min chat</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Success stories: quote slider on black, matching visual on a green panel (script.js) ===== -->
+        <section class="stories" id="stories" aria-labelledby="stories-title">
+            <svg class="divider" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <g fill="currentColor">
+                    <path d="M0 0v95c51-40 134.5-65.3 238-55 65 6.5 103.8 14.8 141 21.4C416.3 78 452 93 511 93s99.5-20.5 138.6-41c39.1-10.5 76.9-21 130.4-21 113 0 136.8 2.8 220 28V0H0Z" opacity=".5"/>
+                    <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z" opacity=".5"/>
+                    <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z"/>
+                </g>
+            </svg>
+            <div class="stories-inner">
+                <div class="stories-content">
+                    <p class="slugline slugline--on-light">PEN PAL SUCCESS STORIES</p>
+                    <h2 class="section-title stories-title" id="stories-title">Our writers <span class="title-mark">are winning.<svg class="title-underline" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 16C58 7 132 4 200 8c34 2 64 5 92 10" pathLength="1"/></svg></span></h2>
+
+                    <div class="story-slides">
+                        <figure class="story is-active" id="story-1" aria-roledescription="slide" aria-label="1 of 2">
+                            <blockquote class="story-quote">
+                                <p class="story-headline">From stuck on the rewrite to staffed writer.</p>
+                                <p>&ldquo;I had been stuck on my script for over a month. TPP gave me clear direction on what to do next. They didn&rsquo;t just give me a list of things to change; they got to the heart of the issues and revealed my blind spots.&rdquo;</p>
+                                <span class="story-stars" aria-hidden="true"></span><span class="visually-hidden">Rated 5 out of 5</span>
+                            </blockquote>
+                            <figcaption class="story-author">
+                                <span class="story-avatar" aria-hidden="true">DR</span>
+                                <span><strong class="story-name">Dallas R.</strong> <span class="story-role">Staffed writer, <cite>Reasonable Doubt</cite></span></span>
+                            </figcaption>
+                        </figure>
+
+                        <figure class="story" id="story-2" aria-roledescription="slide" aria-label="2 of 2" hidden>
+                            <blockquote class="story-quote">
+                                <p class="story-headline">The writers behind <cite>Monogamy</cite> trust TPP.</p>
+                                <p>&ldquo;The Professional Pen is by far one of the best script consulting services available to writers at every level. They&rsquo;ve helped me elevate my screenplays for producers. I won&rsquo;t make a move without TPP&rsquo;s services. Yes. They&rsquo;re THAT good.&rdquo;</p>
+                                <span class="story-stars" aria-hidden="true"></span><span class="visually-hidden">Rated 5 out of 5</span>
+                            </blockquote>
+                            <figcaption class="story-author">
+                                <span class="story-avatar" aria-hidden="true">C+C</span>
+                                <span><strong class="story-name">Craig R. &amp; Caryn W.R.</strong> <span class="story-role">Showrunner and actress/producer, <cite>Monogamy</cite></span></span>
+                            </figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="story-nav">
+                        <button class="story-arrow" id="story-prev" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"/></svg><span class="visually-hidden">Previous story</span></button>
+                        <button class="story-dot is-active" type="button" aria-controls="story-1" aria-current="true"><span class="visually-hidden">Show story 1: Dallas R.</span></button>
+                        <button class="story-dot" type="button" aria-controls="story-2"><span class="visually-hidden">Show story 2: Craig R. and Caryn W.R.</span></button>
+                        <button class="story-arrow" id="story-next" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7"/></svg><span class="visually-hidden">Next story</span></button>
+                        <button class="story-pause" id="story-pause" type="button" aria-pressed="false">
+                            <svg class="story-pause-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14M16 5v14"/></svg>
+                            <svg class="story-play-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 4.5v15l12-7.5z"/></svg>
+                            <span class="visually-hidden">Pause stories</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Visual for each story (decorative; swaps with the quote) -->
+                <div class="stories-visual" aria-hidden="true">
+                    <div class="story-frame">
+                        <div class="story-visual story-visual--photo is-active">
+                            <picture>
+                                <source type="image/webp" media="(min-width: 48rem)" srcset="images/testimonials/dallas-r.webp">
+                                <source type="image/webp" srcset="images/testimonials/dallas-r-m.webp">
+                                <source media="(min-width: 48rem)" srcset="images/testimonials/dallas-r.png">
+                                <img src="images/testimonials/dallas-r-m.png" alt="" width="640" height="722" loading="lazy" decoding="async">
+                            </picture>
+                            <ul class="story-wins">
+                                <li>Disney Writing Program 2023</li>
+                                <li>Gotham Creators to Watch 2024</li>
+                            </ul>
+                        </div>
+                        <div class="story-visual story-visual--photo">
+                            <picture>
+                                <source type="image/webp" media="(min-width: 48rem)" srcset="images/testimonials/craig-caryn.webp">
+                                <source type="image/webp" srcset="images/testimonials/craig-caryn-m.webp">
+                                <source media="(min-width: 48rem)" srcset="images/testimonials/craig-caryn.png">
+                                <img src="images/testimonials/craig-caryn-m.png" alt="" width="640" height="809" loading="lazy" decoding="async">
+                            </picture>
+                            <ul class="story-wins">
+                                <li><cite>Monogamy</cite> series renewal</li>
+                                <li>Created by Craig Ross Jr.</li>
+                            </ul>
+                        </div>
+                        <div class="story-badge">
+                            <span class="story-badge-number">400+</span>
+                            <span class="story-badge-label">Competition placements</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <svg class="divider divider--bottom divider--light" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <g fill="currentColor">
+                    <path d="M0 0v95c51-40 134.5-65.3 238-55 65 6.5 103.8 14.8 141 21.4C416.3 78 452 93 511 93s99.5-20.5 138.6-41c39.1-10.5 76.9-21 130.4-21 113 0 136.8 2.8 220 28V0H0Z" opacity=".5"/>
+                    <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z" opacity=".5"/>
+                    <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z"/>
+                </g>
+            </svg>
+        </section>
+
+        <!-- ===== About: Shannan's story, photo collage with a "years in the game" badge ===== -->
+        <section class="about" id="about" aria-labelledby="about-title">
+
+            <div class="container about-inner">
+                <div class="about-media">
+                    <picture>
+                        <source type="image/webp" media="(min-width: 48rem)" srcset="images/about/shannan.webp">
+                        <source type="image/webp" srcset="images/about/shannan-m.webp">
+                        <source media="(min-width: 48rem)" srcset="images/about/shannan.jpg">
+                        <img class="about-photo" src="images/about/shannan-m.jpg" alt="Shannan E. Johnson in a green blazer on a director's chair" width="720" height="900" loading="lazy" decoding="async">
+                    </picture>
+                    <picture>
+                        <source type="image/webp" media="(min-width: 48rem)" srcset="images/about/team.webp">
+                        <source type="image/webp" srcset="images/about/team-m.webp">
+                        <source media="(min-width: 48rem)" srcset="images/about/team.jpg">
+                        <img class="about-photo-small" src="images/about/team-m.jpg" alt="Shannan with Story Experts Carlton L. Allen and PAGES Matam" width="440" height="550" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="about-badge">
+                        <span class="about-badge-number">10+</span>
+                        <span class="about-badge-label">Years in the game</span>
+                    </div>
+                </div>
+
+                <div class="about-content">
+                    <p class="slugline slugline--on-light">About The Professional Pen</p>
+                    <h2 class="section-title about-title" id="about-title">Hollywood&rsquo;s a gated community. We&rsquo;ve got the <span class="title-mark">passcode.<svg class="title-underline" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 16C58 7 132 4 200 8c34 2 64 5 92 10" pathLength="1"/></svg></span></h2>
+                    <p class="about-text">Founded by former TV exec Shannan E. Johnson, TPP was the first Black-owned script consultancy. We break development down into the same steps real studios use, with way more support, way less confusion and no gatekeeping.</p>
+                    <p class="about-text">Instead of one-size-fits-all coverage, you get a dedicated Story Expert: a working writer trained to guide you from idea to pitch.</p>
+                    <ul class="about-points">
+                        <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.7 2.7L16 9.5"/></svg>Former TV executive (NBCUniversal, Syfy)</li>
+                        <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.7 2.7L16 9.5"/></svg>Hand-picked, trained Story Experts</li>
+                        <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.7 2.7L16 9.5"/></svg>A development process that mirrors real studios</li>
+                        <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.7 2.7L16 9.5"/></svg>No gatekeeping. Straight-shot, no-chaser notes</li>
+                    </ul>
+                    <div class="about-footer">
+                        <a class="btn btn-primary" href="#watch">Meet the coaches</a>
+                        <div class="about-founder">
+                            <picture>
+                                <source type="image/webp" srcset="images/about/shannan-avatar.webp">
+                                <img src="images/about/shannan-avatar.jpg" alt="" width="128" height="128" loading="lazy" decoding="async">
+                            </picture>
+                            <div>
+                                <div class="about-founder-name">Shannan E. Johnson</div>
+                                <div class="about-founder-role">CEO + Head Consultant</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Watch: full-bleed welcome video. The darkened still fills the
+             section; pressing play opens the video in a pop-up (script.js) ===== -->
+        <section class="watch" id="watch" aria-labelledby="watch-title">
+            <picture class="watch-bg" aria-hidden="true">
+                <source type="image/webp" media="(min-width: 48rem)" srcset="images/video/watch-bg.webp">
+                <source type="image/webp" srcset="images/video/watch-bg-m.webp">
+                <source media="(min-width: 48rem)" srcset="images/video/watch-bg.jpg">
+                <img src="images/video/watch-bg-m.jpg" alt="" width="1160" height="600" loading="lazy" decoding="async">
+            </picture>
+            <svg class="divider divider--light" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <g fill="currentColor">
+                    <path d="M0 0v95c51-40 134.5-65.3 238-55 65 6.5 103.8 14.8 141 21.4C416.3 78 452 93 511 93s99.5-20.5 138.6-41c39.1-10.5 76.9-21 130.4-21 113 0 136.8 2.8 220 28V0H0Z" opacity=".5"/>
+                    <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z" opacity=".5"/>
+                    <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z"/>
+                </g>
+            </svg>
+
+            <div class="watch-content">
+                <h2 class="watch-title" id="watch-title"><span class="watch-line">Meet the</span> <span class="watch-line">Pen.</span></h2>
+                <button class="watch-play" id="watch-play" type="button" aria-haspopup="dialog" aria-controls="video-dialog">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+                    <span class="visually-hidden">Play video: Welcome to The Professional Pen, 2 minutes 44 seconds</span>
+                </button>
+                <p class="watch-text">Hear from Shannan and the Story Experts about how we take writers from idea to pitch. <span class="watch-length">Watch &middot; 2:44</span></p>
+            </div>
+            <svg class="divider divider--bottom divider--white" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <g fill="currentColor">
+                    <path d="M0 0v95c51-40 134.5-65.3 238-55 65 6.5 103.8 14.8 141 21.4C416.3 78 452 93 511 93s99.5-20.5 138.6-41c39.1-10.5 76.9-21 130.4-21 113 0 136.8 2.8 220 28V0H0Z" opacity=".5"/>
+                    <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z" opacity=".5"/>
+                    <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z"/>
+                </g>
+            </svg>
+        </section>
+
+        <!-- ===== FAQ: heading and accordion, with a cut-out of Shannan on the right ===== -->
+        <section class="faq" id="faq" aria-labelledby="faq-title">
+            <div class="container faq-inner">
+                <div class="faq-main">
+                    <p class="slugline slugline--on-light">Questions &amp; answers</p>
+                    <h2 class="section-title faq-title" id="faq-title">Got <span class="title-mark">questions?<svg class="title-underline" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 16C58 7 132 4 200 8c34 2 64 5 92 10" pathLength="1"/></svg></span></h2>
+                    <p class="faq-intro">Straight answers to what writers ask us most.</p>
+
+                    <div class="faq-tabs" role="tablist" aria-label="FAQ topics">
+                        <button class="faq-tab" id="faq-tab-start" type="button" role="tab" aria-selected="true" aria-controls="faq-panel-start">Getting started</button>
+                        <button class="faq-tab" id="faq-tab-services" type="button" role="tab" aria-selected="false" aria-controls="faq-panel-services" tabindex="-1">Our services</button>
+                        <button class="faq-tab" id="faq-tab-working" type="button" role="tab" aria-selected="false" aria-controls="faq-panel-working" tabindex="-1">Working with us</button>
+                    </div>
+
+                    <div class="faq-list" id="faq-panel-start" role="tabpanel" aria-labelledby="faq-tab-start">
+                        <details class="faq-item" open>
+                        <summary class="faq-question"><span class="faq-num" aria-hidden="true">01</span><span class="faq-q">Do I need a finished script to work with you?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+                        <div class="faq-answer"><p>Not at all. You can work with us at every stage:</p><ul><li><strong>Just an idea?</strong> Use a Starter Kit workbook to develop your story from idea to script.</li><li><strong>Finished an outline?</strong> Submit it for an Outline Review to see if it&rsquo;s ready to move into pages.</li><li><strong>Finished a draft?</strong> Submit it for Development Notes and get studio-level insight for your rewrite.</li><li><strong>Need to talk it through?</strong> Book a Story Jam with a Story Expert.</li></ul></div>
+                    </details>
+                        <details class="faq-item">
+                        <summary class="faq-question"><span class="faq-num" aria-hidden="true">02</span><span class="faq-q">How do I know which service is right for me?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+                        <div class="faq-answer"><p>It depends on where your script is and the kind of support you want. If you&rsquo;re not sure, book a free Kick-Off Jam: a quick 1:1 chat with a Story Expert who&rsquo;ll point you to the right fit.</p></div>
+                    </details>
+                        <details class="faq-item">
+                        <summary class="faq-question"><span class="faq-num" aria-hidden="true">03</span><span class="faq-q">Can you help if I&rsquo;m just getting started?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+                        <div class="faq-answer"><p>Absolutely. Many writers come to us long before they have a draft. The Academy, our budget-friendly film school, lives inside our community and offers self-paced lessons, live courses and feedback from Story Experts.</p></div>
+                    </details>
+                    </div>
+                    <div class="faq-list" id="faq-panel-services" role="tabpanel" aria-labelledby="faq-tab-services" hidden>
+                        <details class="faq-item" open>
+                        <summary class="faq-question"><span class="faq-num" aria-hidden="true">01</span><span class="faq-q">Do you offer script coverage?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+                        <div class="faq-answer"><p>No. Traditional coverage is written for executives, not writers. We offer <strong>Development Notes</strong> instead: clear, page-by-page guidance on story, structure and character, so you know exactly what to fix in your rewrite.</p></div>
+                    </details>
+                        <details class="faq-item">
+                        <summary class="faq-question"><span class="faq-num" aria-hidden="true">02</span><span class="faq-q">What&rsquo;s the difference between Development Notes and Story Jams?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+                        <div class="faq-answer"><p><strong>Development Notes</strong> are written, page-by-page notes on a full draft. Perfect before you submit to competitions or pitch.</p><p><strong>Story Jams</strong> are live, 1-hour sessions where we build out your story together, from concept to plot. Ideal if you have an idea, an outline, early pages or questions about your notes.</p></div>
+                    </details>
+                        <details class="faq-item">
+                        <summary class="faq-question"><span class="faq-num" aria-hidden="true">03</span><span class="faq-q">How long do Development Notes take?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+                        <div class="faq-answer"><p>About 14 business days. Pay-later options are available, and scripts over the page limit are $4 per extra page.</p></div>
+                    </details>
+                    </div>
+                    <div class="faq-list" id="faq-panel-working" role="tabpanel" aria-labelledby="faq-tab-working" hidden>
+                        <details class="faq-item" open>
+                        <summary class="faq-question"><span class="faq-num" aria-hidden="true">01</span><span class="faq-q">Do I need an agent or manager to work with you?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+                        <div class="faq-answer"><p>No. You don&rsquo;t need representation or industry connections. We help you build strong material first; representation comes later.</p></div>
+                    </details>
+                        <details class="faq-item">
+                        <summary class="faq-question"><span class="faq-num" aria-hidden="true">02</span><span class="faq-q">Can international writers work with you?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+                        <div class="faq-answer"><p>Yes. Writers from anywhere in the world can work with us. All notes, courses and sessions are delivered online.</p></div>
+                    </details>
+                        <details class="faq-item">
+                        <summary class="faq-question"><span class="faq-num" aria-hidden="true">03</span><span class="faq-q">Do you sign NDAs? How do I protect my work?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+                        <div class="faq-answer"><p>We don&rsquo;t sign NDAs. The best protection is to register your script or outline with the U.S. Copyright Office before sharing it. That gives you legal proof of ownership.</p></div>
+                    </details>
+                    </div>
+
+                    <p class="faq-more">Still not sure where to start? <a href="#chat">Book a free 15-min chat</a> and a Story Expert will point you to the right fit.</p>
+                </div>
+
+                <figure class="faq-figure">
+                    <picture>
+                        <source type="image/webp" media="(min-width: 48rem)" srcset="images/faq/shannan-faq.webp">
+                        <source type="image/webp" srcset="images/faq/shannan-faq-m.webp">
+                        <source media="(min-width: 48rem)" srcset="images/faq/shannan-faq.png">
+                        <img src="images/faq/shannan-faq-m.png" alt="Shannan E. Johnson smiling in a director's chair" width="640" height="811" loading="lazy" decoding="async">
+                    </picture>
+                    <figcaption class="faq-caption"><strong>Shannan E. Johnson</strong> CEO + Head Consultant</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- ===== Final CTA: full-bleed film-set photo, darkened, with the closing pitch ===== -->
+        <section class="final-cta" id="chat" aria-labelledby="final-cta-title">
+            <picture class="final-cta-bg" aria-hidden="true">
+                <source type="image/webp" media="(min-width: 48rem)" srcset="images/hero/hero-film-set.webp">
+                <source type="image/webp" srcset="images/hero/hero-film-set-m.webp">
+                <source media="(min-width: 48rem)" srcset="images/hero/hero-film-set.jpg">
+                <img src="images/hero/hero-film-set-m.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
+            </picture>
+            <svg class="divider divider--white" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <g fill="currentColor">
+                    <path d="M0 0v95c51-40 134.5-65.3 238-55 65 6.5 103.8 14.8 141 21.4C416.3 78 452 93 511 93s99.5-20.5 138.6-41c39.1-10.5 76.9-21 130.4-21 113 0 136.8 2.8 220 28V0H0Z" opacity=".5"/>
+                    <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z" opacity=".5"/>
+                    <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z"/>
+                </g>
+            </svg>
+
+            <div class="container final-cta-content">
+                <p class="slugline slugline--center">SMASH CUT TO: YOUR NEXT DRAFT</p>
+                <h2 class="final-cta-title" id="final-cta-title">Your story deserves <span class="title-mark">a greenlight.<svg class="title-underline" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 16C58 7 132 4 200 8c34 2 64 5 92 10" pathLength="1"/></svg></span></h2>
+                <p class="final-cta-text">Book a free 15-minute Kick-Off Jam. A Story Expert will look at where your script is today and map out exactly what to do next.</p>
+                <div class="final-cta-actions">
+                    <a class="btn btn-primary" href="https://calendly.com/kick-off-jam/chat" target="_blank" rel="noopener">Book your free 15-min chat<span class="visually-hidden"> (opens in a new tab)</span></a>
+                    <a class="btn btn-secondary" href="#offers">Explore our offers</a>
+                </div>
+                <p class="final-cta-note">No pressure, no pitch. Just a plan for your script.</p>
+            </div>
+        </section>
+
+        <!-- ===== Contact: the team on two green circles, general inquiry form beside it.
+             The form opens the visitor's email app with the message filled in (script.js) ===== -->
+        <section class="contact" id="contact" aria-labelledby="contact-title">
+            <svg class="divider" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <g fill="currentColor">
+                    <path d="M0 0v95c51-40 134.5-65.3 238-55 65 6.5 103.8 14.8 141 21.4C416.3 78 452 93 511 93s99.5-20.5 138.6-41c39.1-10.5 76.9-21 130.4-21 113 0 136.8 2.8 220 28V0H0Z" opacity=".5"/>
+                    <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z" opacity=".5"/>
+                    <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z"/>
+                </g>
+            </svg>
+
+            <div class="container contact-inner">
+                <figure class="contact-figure">
+                    <picture>
+                        <source type="image/webp" media="(min-width: 48rem)" srcset="images/hero/coaches.webp">
+                        <source type="image/webp" srcset="images/hero/coaches-m.webp">
+                        <source media="(min-width: 48rem)" srcset="images/hero/coaches.png">
+                        <img src="images/hero/coaches-m.png" alt="The three Story Experts of The Professional Pen" width="840" height="1163" loading="lazy" decoding="async">
+                    </picture>
+                    <figcaption class="contact-caption">
+                        <span class="contact-caption-title">Real people read every message</span>
+                        <a href="mailto:info@theprofessionalpen.com">info@theprofessionalpen.com</a>
+                    </figcaption>
+                </figure>
+
+                <div class="contact-main">
+                    <p class="slugline slugline--on-light">General inquiries</p>
+                    <h2 class="section-title contact-title" id="contact-title">Let&rsquo;s <span class="title-mark">talk story.<svg class="title-underline" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 16C58 7 132 4 200 8c34 2 64 5 92 10" pathLength="1"/></svg></span></h2>
+                    <p class="contact-intro">Questions about notes, workbooks, the community or anything else? Send us a message and we&rsquo;ll get back to you.</p>
+
+                    <form class="contact-form" id="contact-form" novalidate>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="cf-name">Name</label>
+                                <input id="cf-name" name="name" type="text" autocomplete="name" required aria-describedby="cf-name-error">
+                                <p class="form-error" id="cf-name-error" hidden>Please enter your name.</p>
+                            </div>
+                            <div class="form-field">
+                                <label for="cf-email">Email</label>
+                                <input id="cf-email" name="email" type="email" autocomplete="email" required aria-describedby="cf-email-error">
+                                <p class="form-error" id="cf-email-error" hidden>Please enter a valid email address.</p>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label for="cf-topic">What&rsquo;s this about?</label>
+                            <select id="cf-topic" name="topic">
+                                <option>General question</option>
+                                <option>Development Notes</option>
+                                <option>Workbooks</option>
+                                <option>The Social (community)</option>
+                                <option>Story Jams and consultations</option>
+                                <option>Something else</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="cf-message">Message</label>
+                            <textarea id="cf-message" name="message" rows="5" required aria-describedby="cf-message-error"></textarea>
+                            <p class="form-error" id="cf-message-error" hidden>Please write a short message.</p>
+                        </div>
+                        <button class="btn btn-primary contact-submit" type="submit">Send message</button>
+                        <p class="form-status" id="cf-status" role="status"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Newsletter: email signup strip above the footer ===== -->
+        <section class="newsletter" aria-labelledby="newsletter-title">
+            <div class="container newsletter-inner">
+                <div class="newsletter-copy">
+                    <h2 class="newsletter-title" id="newsletter-title">Get the notes in your inbox.</h2>
+                    <p class="newsletter-text">Screenwriting tips, competition deadlines and new workbooks from Shannan. No spam, unsubscribe anytime.</p>
+                </div>
+                <form class="newsletter-form" id="newsletter-form" novalidate>
+                    <label class="visually-hidden" for="nl-email">Email address</label>
+                    <input id="nl-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="nl-status">
+                    <button class="btn btn-dark-solid" type="submit">Sign up</button>
+                    <p class="newsletter-status" id="nl-status" role="status"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a class="footer-logo" href="#top-of-page">
+                        <picture>
+                            <source type="image/webp" srcset="images/brand/tpp-logo.webp">
+                            <img src="images/brand/tpp-logo.png" alt="" width="128" height="128" loading="lazy" decoding="async">
+                        </picture>
+                        <span>The Professional Pen<span class="visually-hidden">, back to top</span></span>
+                    </a>
+                    <p class="footer-tagline">Script notes, workbooks and a writing community from former TV exec Shannan E. Johnson. Write better stories. Faster.</p>
+                    <a class="footer-email" href="mailto:info@theprofessionalpen.com">info@theprofessionalpen.com</a>
+                </div>
+                <nav class="footer-col" aria-label="Services">
+                    <h2 class="footer-title">Services</h2>
+                    <ul class="footer-links">
+                        <li><a href="https://www.theprofessionalpen.com/development-notes">Development Notes</a></li>
+                        <li><a href="https://www.theprofessionalpen.com/screenwriting-services#outline">Outline Review</a></li>
+                        <li><a href="https://www.theprofessionalpen.com/screenwriting-services#story-notes">Story Notes</a></li>
+                        <li><a href="https://www.theprofessionalpen.com/home#storyjam">Story Jams</a></li>
+                        <li><a href="https://calendly.com/kick-off-jam/chat">Kick-Off Jam</a></li>
+                    </ul>
+                </nav>
+                <nav class="footer-col" aria-label="Learn">
+                    <h2 class="footer-title">Learn</h2>
+                    <ul class="footer-links">
+                        <li><a href="https://www.theprofessionalpen.com/workbooks">Screenwriting Workbooks</a></li>
+                        <li><a href="https://www.theprofessionalpen.com/academy">The Academy</a></li>
+                        <li><a href="https://www.skool.com/screenwriters">The Social community</a></li>
+                        <li><a href="https://www.theprofessionalpen.com/blog">The Screenwriting Blog</a></li>
+                    </ul>
+                </nav>
+                <nav class="footer-col" aria-label="Company">
+                    <h2 class="footer-title">Company</h2>
+                    <ul class="footer-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="https://www.theprofessionalpen.com/script-competition">The First 15 Script Competition</a></li>
+                        <li><a href="https://www.theprofessionalpen.com/policies-and-agreement">Policies + Agreement</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="footer-year">2026</span> The Professional Pen. All rights reserved.</p>
+                <p>Website by <a href="https://migsflow.com" target="_blank" rel="noopener">MigsFlow<span class="visually-hidden"> (opens in a new tab)</span></a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top (appears after scrolling down; global.js) -->
+    <a class="back-to-top" id="back-to-top" href="#top-of-page">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        <span class="visually-hidden">Back to top</span>
+    </a>
+
+    <!-- Video pop-up: the Vimeo player is added only when it opens (script.js) -->
+    <dialog class="video-dialog" id="video-dialog" aria-label="Welcome to The Professional Pen video">
+        <button class="video-close" id="video-close" type="button"><span aria-hidden="true">&times;</span><span class="visually-hidden">Close video</span></button>
+        <div class="video-frame" id="video-frame" data-src="https://player.vimeo.com/video/1148213553?autoplay=1&amp;dnt=1&amp;title=0&amp;byline=0&amp;portrait=0"></div>
+    </dialog>
+
+</body>
+</html>

@@ -1,0 +1,841 @@
+/* ==========================================================================
+   THE PROFESSIONAL PEN — GLOBAL STYLES
+   Fonts, colors, resets, shared type, buttons, header and phone menu.
+   Mobile first: base rules are for phones, min-width queries add the rest.
+   ========================================================================== */
+
+/* ---------- Fonts (self-hosted) ---------- */
+@font-face {
+    font-family: "Big Shoulders Display";
+    src: url("../fonts/big-shoulders-display-latin-800-normal.woff2") format("woff2");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Public Sans";
+    src: url("../fonts/public-sans-latin-400-normal.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Public Sans";
+    src: url("../fonts/public-sans-latin-600-normal.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Courier Prime";
+    src: url("../fonts/courier-prime-latin-400-normal.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Courier Prime";
+    src: url("../fonts/courier-prime-latin-700-normal.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ---------- Tokens ---------- */
+:root {
+    --color-black: #000000;
+    --color-ink: #0d0f0e;
+    --color-white: #ffffff;
+    --color-light: #f3f5f3;          /* light section background */
+    --color-text-dark: #3a403d;      /* body text on light backgrounds */
+    --color-green: #38e58b;      /* bright: on dark backgrounds or behind black text only */
+    --color-text-muted: #c8cbc9; /* body text on black */
+    --color-line: #26302b;
+    --color-surface: #101513;        /* cards and the header bar on black */
+    --color-surface-raised: #151c19;
+
+    --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+    --font-body: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "Courier Prime", "Courier New", Courier, monospace;
+
+    --container: 80rem;
+    --gutter: clamp(1.25rem, 4vw, 2.5rem);
+    --header-h: 4.5rem;
+    --radius: 1rem;
+    --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: var(--header-h);
+}
+
+body {
+    min-height: 100vh;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-white);
+    background-color: var(--color-black);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Anything marked hidden stays hidden, whatever its display rule */
+[hidden] {
+    display: none !important;
+}
+
+img,
+picture,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+:focus-visible {
+    outline: 3px solid var(--color-green);
+    outline-offset: 3px;
+}
+
+/* ---------- Helpers ---------- */
+.container {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 200;
+    padding: 0.75rem 1.25rem;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-black);
+    background-color: var(--color-green);
+    transform: translateY(-200%);
+    transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+    transform: none;
+}
+
+/* Small typewriter label, styled like a screenplay scene heading */
+.slugline {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: clamp(0.75rem, 3.2vw, 0.875rem);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: var(--color-green);
+}
+
+.slugline::before {
+    content: "";
+    flex: none;
+    width: clamp(1.25rem, 5vw, 2rem);
+    height: 2px;
+    background-color: currentColor;
+}
+
+/* Centered labels get a matching line on the right too */
+.slugline--center::after {
+    content: "";
+    flex: none;
+    width: clamp(1.25rem, 5vw, 2rem);
+    height: 2px;
+    background-color: currentColor;
+}
+
+/* On light sections: black text, green lines */
+.slugline--on-light {
+    color: var(--color-black);
+}
+
+.slugline--on-light::before,
+.slugline--on-light::after {
+    background-color: var(--color-green);
+}
+
+/* ---------- Section headings ---------- */
+.section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 48rem;
+    margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+    text-align: center;
+}
+
+.section-title {
+    margin-top: 1rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.75rem, 8vw, 5.5rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+}
+
+.section-text {
+    max-width: 38rem;
+    margin-top: 1.25rem;
+    font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+    line-height: 1.6;
+    color: var(--color-text-dark);
+}
+
+/* Section headings on dark backgrounds */
+.section-title--on-dark {
+    color: var(--color-white);
+}
+
+.section-text--on-dark {
+    color: var(--color-text-muted);
+}
+
+/* Hand-drawn green underline under part of a heading. It draws in from
+   left to right when it scrolls into view (global.js adds .is-drawn);
+   without JavaScript it simply shows. */
+.title-mark {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.title-underline {
+    position: absolute;
+    left: -2%;
+    bottom: -0.12em;
+    width: 104%;
+    height: 0.2em;
+    overflow: visible;
+}
+
+.title-underline path {
+    fill: none;
+    stroke: var(--color-green);
+    stroke-width: 5;
+    stroke-linecap: round;
+}
+
+.draw-ready .title-underline path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 1s var(--ease) 0.25s;
+}
+
+.draw-ready .title-mark.is-drawn .title-underline path {
+    stroke-dashoffset: 0;
+}
+
+/* Wave divider at the top of a section, in the color of the section above */
+.divider {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: clamp(2.5rem, 7vw, 6rem);
+    color: var(--color-black);
+    pointer-events: none;
+}
+
+/* The same wave in white */
+.divider--white {
+    color: var(--color-white);
+}
+
+/* Flipped to the bottom edge, in the color of the section below */
+.divider--bottom {
+    top: auto;
+    bottom: -1px;
+    transform: rotate(180deg);
+}
+
+/* The same wave coming out of a light section */
+.divider--light {
+    color: var(--color-light);
+}
+
+/* ---------- Buttons ----------
+   The new fill sweeps in from the left (::before), per the MigsFlow standard.
+   Colors are chosen so the text stays readable at every point of the sweep. */
+.btn {
+    position: relative;
+    z-index: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3.25rem;
+    padding: 0.875rem 1.75rem;
+    overflow: hidden;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.45s var(--ease);
+}
+
+.btn:hover::before,
+.btn:focus-visible::before {
+    transform: scaleX(1);
+}
+
+/* Bright green with black text; sweeps to white (black text reads on both) */
+.btn-primary {
+    color: var(--color-black);
+    background-color: var(--color-green);
+    border-color: var(--color-green);
+}
+
+.btn-primary::before {
+    background-color: var(--color-white);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+    border-color: var(--color-white);
+}
+
+/* White outline on black; sweeps to charcoal with a green edge (white text reads on both) */
+.btn-secondary {
+    color: var(--color-white);
+    background-color: var(--color-black);
+    border-color: var(--color-white);
+}
+
+.btn-secondary::before {
+    background-color: var(--color-surface-raised);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+    border-color: var(--color-green);
+}
+
+/* ---------- Announcement bar ---------- */
+.announcement {
+    background-color: var(--color-green);
+    color: var(--color-black);
+}
+
+.announcement-text {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem 0.75rem;
+    padding-block: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.announcement-tag {
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-green);
+    background-color: var(--color-black);
+}
+
+.announcement-text a {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+.announcement-text a:hover,
+.announcement-text a:focus-visible {
+    text-decoration-thickness: 3px;
+}
+
+.announcement-text a:focus-visible {
+    outline-color: var(--color-black);
+}
+
+/* ---------- Header: full-width white bar, edge to edge like the banner ----------
+   The white sits on .header-bar (not the sticky header itself) so it also
+   covers the phone menu panel, which slides in behind the bar. */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-bar {
+    color: var(--color-black);
+    background-color: var(--color-white);
+    transition: box-shadow 0.3s ease;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: var(--header-h);
+}
+
+/* Green focus rings don't show on white, so the bar uses black ones */
+.header-inner :focus-visible {
+    outline-color: var(--color-black);
+}
+
+.site-header.is-scrolled .header-bar {
+    box-shadow: 0 0.5rem 1.5rem -0.75rem rgba(0, 0, 0, 0.35);
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+}
+
+.brand-logo {
+    width: 2.75rem;
+    height: 2.75rem;
+}
+
+.brand-name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.125rem, 5.4vw, 1.5rem);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--color-black);
+}
+
+/* Phone menu button: three bars that turn into an X.
+   Opening: the outer bars slide to the middle, then rotate into the X.
+   Closing runs the same two steps in reverse. */
+.menu-toggle {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+.menu-toggle-bars,
+.menu-toggle-bars::before,
+.menu-toggle-bars::after {
+    display: block;
+    width: 1.5rem;
+    height: 2px;
+    border-radius: 2px;
+    background-color: var(--color-black);
+}
+
+.menu-toggle-bars {
+    position: relative;
+    transition: background-color 0.15s ease 0.15s;
+}
+
+.menu-toggle-bars::before,
+.menu-toggle-bars::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    transition: translate 0.22s var(--ease) 0.22s, rotate 0.22s var(--ease);
+}
+
+.menu-toggle-bars::before {
+    top: -0.45rem;
+}
+
+.menu-toggle-bars::after {
+    top: 0.45rem;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle-bars {
+    background-color: transparent;
+    transition-delay: 0s;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle-bars::before,
+.menu-toggle[aria-expanded="true"] .menu-toggle-bars::after {
+    transition: translate 0.22s var(--ease), rotate 0.22s var(--ease) 0.22s;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle-bars::before {
+    translate: 0 0.45rem;
+    rotate: 45deg;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle-bars::after {
+    translate: 0 -0.45rem;
+    rotate: -45deg;
+}
+
+/* Phone menu: white panel that drops in under the header bar. global.js sets
+   --menu-top to the bar's bottom edge (it moves while the announcement bar is
+   still on screen), so nothing above the bar is covered. */
+.site-menu {
+    position: fixed;
+    top: var(--menu-top, var(--header-h));
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem var(--gutter) 2.5rem;
+    overflow-y: auto;
+    border-top: 1px solid #e6e8e7;
+    color: var(--color-black);
+    background-color: var(--color-white);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-0.75rem);
+    transition: opacity 0.3s ease, transform 0.35s var(--ease), visibility 0s linear 0.35s;
+}
+
+.site-menu.is-open {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.3s ease, transform 0.35s var(--ease);
+}
+
+.site-menu :focus-visible {
+    outline-color: var(--color-black);
+}
+
+.nav-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-link {
+    position: relative;
+    display: block;
+    padding: 0.875rem 0;
+    border-bottom: 1px solid #e6e8e7;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.25rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+/* Green underline grows from the left on hover/focus */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 3px;
+    background-color: var(--color-green);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.35s var(--ease);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link.is-active::after {
+    transform: scaleX(1);
+}
+
+/* Link for the section on screen (global.js): green bar in the phone menu,
+   green pill on desktop */
+.nav-link.is-active {
+    padding-left: 0.75rem;
+    box-shadow: inset 4px 0 0 var(--color-green);
+}
+
+/* Contact details (phone menu only) */
+.menu-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.menu-contact-label {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.menu-contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    align-self: flex-start;
+    padding-block: 0.25rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--color-green);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+.menu-contact-link svg {
+    flex: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.nav-cta {
+    align-self: stretch;
+}
+
+/* On white, the button's white sweep needs a black edge to stay visible */
+.nav-cta:hover,
+.nav-cta:focus-visible {
+    border-color: var(--color-black);
+}
+
+/* The links, contact block and button slide in one at a time */
+.site-menu .nav-list li,
+.site-menu .menu-contact,
+.site-menu .nav-cta {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.site-menu.is-open .nav-list li,
+.site-menu.is-open .menu-contact,
+.site-menu.is-open .nav-cta {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.45s ease, transform 0.5s var(--ease);
+}
+
+.site-menu.is-open .nav-list li:nth-child(1) { transition-delay: 0.08s; }
+.site-menu.is-open .nav-list li:nth-child(2) { transition-delay: 0.14s; }
+.site-menu.is-open .nav-list li:nth-child(3) { transition-delay: 0.2s; }
+.site-menu.is-open .nav-list li:nth-child(4) { transition-delay: 0.26s; }
+.site-menu.is-open .menu-contact { transition-delay: 0.32s; }
+.site-menu.is-open .nav-cta { transition-delay: 0.38s; }
+
+/* Lock page scrolling while the phone menu is open. It goes on <html>, not
+   <body>: overflow on <body> turns it into its own scroll box, and the sticky
+   header would then scroll away with the page. */
+html.menu-open {
+    overflow: hidden;
+}
+
+/* Desktop: menu sits inline in the header (from 75rem, where all five
+   links and the button fit on one line) */
+@media (min-width: 75rem) {
+    .menu-toggle,
+    .menu-contact {
+        display: none;
+    }
+
+    .site-menu {
+        position: static;
+        z-index: auto;
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+        padding: 0;
+        overflow: visible;
+        border-top: 0;
+        background-color: transparent;
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .site-menu .nav-list li,
+    .site-menu .nav-cta {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .nav-list {
+        flex-direction: row;
+        gap: 0.25rem;
+    }
+
+    .nav-link {
+        padding: 0.5rem 0;
+        border-bottom: 0;
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: 0.9375rem;
+        text-transform: none;
+    }
+
+    .nav-link::after {
+        bottom: 0.2rem;
+        height: 2px;
+    }
+
+    .nav-link {
+        padding-inline: 0.875rem;
+        border-radius: 999px;
+        transition: background-color 0.3s ease;
+    }
+
+    .nav-link::after {
+        left: 0.875rem;
+        right: 0.875rem;
+    }
+
+    .nav-link.is-active {
+        padding-left: 0.875rem;
+        box-shadow: none;
+        background-color: var(--color-green);
+    }
+
+    .nav-link.is-active::after {
+        transform: scaleX(0);
+    }
+
+    .nav-cta {
+        align-self: auto;
+        min-height: 2.75rem;
+        padding: 0.625rem 1.25rem;
+        font-size: 0.9375rem;
+    }
+}
+
+/* ---------- Back to top ---------- */
+.back-to-top {
+    position: fixed;
+    right: clamp(1rem, 3vw, 1.75rem);
+    bottom: clamp(1rem, 3vw, 1.75rem);
+    z-index: 90;
+    display: grid;
+    place-items: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    border: 2px solid var(--color-black);
+    border-radius: 50%;
+    color: var(--color-black);
+    background-color: var(--color-green);
+    box-shadow: 0 0.75rem 1.75rem -0.75rem rgba(0, 0, 0, 0.6);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: opacity 0.3s ease, transform 0.3s var(--ease), visibility 0s linear 0.3s, background-color 0.25s ease;
+}
+
+.back-to-top.is-visible {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.3s ease, transform 0.3s var(--ease), background-color 0.25s ease;
+}
+
+.back-to-top:hover {
+    background-color: var(--color-white);
+}
+
+.back-to-top svg {
+    width: 1.35rem;
+    height: 1.35rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.25s var(--ease);
+}
+
+.back-to-top:hover svg {
+    transform: translateY(-3px);
+}
+
+.back-to-top:focus-visible {
+    outline: 3px solid var(--color-white);
+    outline-offset: 3px;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

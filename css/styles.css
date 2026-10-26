@@ -1,0 +1,2914 @@
+/* ==========================================================================
+   THE PROFESSIONAL PEN — HOMEPAGE STYLES
+   Only what's unique to the homepage. Shared pieces live in global.css.
+   ========================================================================== */
+
+/* ---------- Hero ----------
+   Centered headline under a green "stage light", over drifting particles
+   (script.js draws them on the .particles canvas) and a faint grid. The three coaches
+   rise from the bottom, with floating cards around them and a film strip
+   of client wins closing the section. The hero slides up under the floating
+   header so the light and particles run behind it. */
+.hero {
+    position: relative;
+    overflow: hidden;
+    margin-top: calc(-1 * var(--header-h));
+    padding-top: calc(var(--header-h) + clamp(2rem, 6vw, 4.5rem));
+    background-color: var(--color-black);
+}
+
+/* Stage light from above */
+.hero::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: -18rem;
+    width: min(140vw, 90rem);
+    height: 52rem;
+    background: radial-gradient(ellipse at 50% 30%, rgba(56, 229, 139, 0.2), rgba(56, 229, 139, 0.05) 45%, transparent 70%);
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+/* Faint grid, strongest behind the headline and fading out toward the edges */
+.hero::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 4rem 4rem;
+    background-position: center top;
+    -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 30%, #000 30%, transparent 75%);
+    mask-image: radial-gradient(ellipse 70% 55% at 50% 30%, #000 30%, transparent 75%);
+    pointer-events: none;
+}
+
+/* Particle canvas (script.js draws on it); used by the hero and verdict */
+.particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Background photos: stacked, one visible at a time, each slowly zooming
+   out while it shows. A dark overlay keeps text readable and fades to solid
+   black at the bottom so the coaches and film strip blend in. */
+.hero-slides {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.6s ease;
+}
+
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.08);
+}
+
+.hero-slide.is-active {
+    opacity: 1;
+}
+
+.hero-slide.is-active img {
+    transform: scale(1);
+    transition: transform 7s linear;
+}
+
+.hero-slides::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.62) 45%, rgba(0, 0, 0, 0.9) 75%, var(--color-black));
+}
+
+.hero .particles {
+    z-index: 1;
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-title {
+    max-width: 11ch;
+    margin-top: 1.25rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(3.75rem, 14vw, 10.5rem);
+    line-height: 0.86;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+}
+
+/* "Faster." sits on its own line with a hand-drawn underline that draws in
+   from left to right once the page loads */
+.hero-title-accent {
+    position: relative;
+    display: table;
+    margin-inline: auto;
+    color: var(--color-green);
+}
+
+.hero-underline {
+    position: absolute;
+    left: -3%;
+    bottom: -0.14em;
+    width: 106%;
+    height: 0.2em;
+    overflow: visible;
+}
+
+.hero-underline path {
+    fill: none;
+    stroke: var(--color-white);
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw-underline 1s 0.6s var(--ease) forwards;
+}
+
+@keyframes draw-underline {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.hero-text {
+    max-width: 38rem;
+    margin-top: 1.5rem;
+    font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+}
+
+.hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 22rem;
+    margin-top: 2rem;
+}
+
+/* The coaches: cut-out photo on a soft green glow, fading into the black */
+.hero-stage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.hero-team {
+    position: relative;
+    width: min(100%, 30rem);
+    margin-top: 3rem;
+}
+
+.hero-team::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 4%;
+    width: 130%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(56, 229, 139, 0.3), rgba(56, 229, 139, 0.08) 55%, transparent 75%);
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.hero-team-photo {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 840 / 980;
+    object-fit: cover;
+    object-position: top;
+    -webkit-mask-image: linear-gradient(#000 68%, transparent 97%);
+    mask-image: linear-gradient(#000 68%, transparent 97%);
+}
+
+.hero-team-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+}
+
+.hero-team-caption strong {
+    font-weight: 700;
+    color: var(--color-white);
+}
+
+/* ---------- Floating cards ----------
+   Phones: only the quote shows, in the flow under the photo.
+   Wide screens: all three float around the coaches and drift gently. */
+.float-card {
+    text-align: left;
+}
+
+.float-note,
+.float-tag {
+    display: none;
+}
+
+.float-quote {
+    width: 100%;
+    max-width: 24rem;
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.25rem 1.125rem;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius);
+    background-color: var(--color-surface);
+}
+
+.float-quote blockquote p {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+.float-quote blockquote p::before {
+    content: "\201C";
+    display: block;
+    height: 1.75rem;
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--color-green);
+}
+
+.float-quote figcaption {
+    margin-top: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+}
+
+.float-quote figcaption strong {
+    color: var(--color-white);
+}
+
+.float-quote cite {
+    font-style: italic;
+}
+
+/* Green "script note" with a strip of tape */
+.float-note {
+    position: absolute;
+    width: 11.5rem;
+    padding: 1.25rem 1rem 1rem;
+    border-radius: 0.25rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.35;
+    color: var(--color-black);
+    background-color: var(--color-green);
+    box-shadow: 0 1.25rem 2.5rem -1rem rgba(0, 0, 0, 0.8);
+}
+
+.float-note::before {
+    content: "";
+    position: absolute;
+    top: -0.6rem;
+    left: 50%;
+    width: 4.5rem;
+    height: 1.25rem;
+    background-color: rgba(255, 255, 255, 0.55);
+    transform: translateX(-50%) rotate(-3deg);
+}
+
+.float-note-page {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.float-tag {
+    position: absolute;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.125rem;
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    background-color: var(--color-surface);
+    box-shadow: 0 1.25rem 2.5rem -1rem rgba(0, 0, 0, 0.8);
+}
+
+.float-tag-dot {
+    flex: none;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background-color: var(--color-green);
+    box-shadow: 0 0 0 0 rgba(56, 229, 139, 0.6);
+    animation: pulse-dot 2.4s ease-out infinite;
+}
+
+@keyframes pulse-dot {
+    70% {
+        box-shadow: 0 0 0 0.6rem rgba(56, 229, 139, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(56, 229, 139, 0);
+    }
+}
+
+@keyframes drift {
+    50% {
+        translate: 0 -0.75rem;
+    }
+}
+
+@media (min-width: 30rem) {
+    .hero-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: none;
+        width: auto;
+    }
+}
+
+@media (min-width: 48rem) {
+    .hero-team {
+        width: min(100%, 38rem);
+        margin-top: 3rem;
+    }
+
+    .hero-team-caption {
+        font-size: 0.875rem;
+    }
+}
+
+@media (min-width: 64rem) {
+    /* "Write better stories." on one line, "Faster." under it */
+    .hero-title {
+        max-width: none;
+        font-size: clamp(5rem, 8.6vw, 9.5rem);
+    }
+}
+
+/* Wide screens: the cards leave the flow and float around the coaches */
+@media (min-width: 75rem) {
+    .hero-stage {
+        display: block;
+    }
+
+    .hero-team {
+        margin-inline: auto;
+    }
+
+    .float-note,
+    .float-tag {
+        display: flex;
+    }
+
+    .float-note {
+        display: block;
+        top: 22%;
+        left: 4%;
+        rotate: -5deg;
+        animation: drift 7s ease-in-out infinite;
+    }
+
+    .float-quote {
+        position: absolute;
+        top: 52%;
+        left: 0;
+        width: 16rem;
+        margin-top: 0;
+        rotate: 2deg;
+        box-shadow: 0 1.25rem 2.5rem -1rem rgba(0, 0, 0, 0.8);
+        animation: drift 8s 1.2s ease-in-out infinite;
+    }
+
+    .float-tag {
+        top: 34%;
+        right: 0;
+        rotate: 3deg;
+        animation: drift 6.5s 0.6s ease-in-out infinite;
+    }
+}
+
+/* ---------- Film strip ----------
+   Bright green band with sprocket holes along both edges, right under the
+   coaches; results and client wins scroll past on a loop (script.js clones
+   the list so the loop is seamless). */
+.film-strip {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    margin-top: 2rem;
+    padding-block: 1.375rem;
+    background-color: var(--color-green);
+}
+
+.film-strip::before,
+.film-strip::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0.1875rem;
+    background-image: repeating-linear-gradient(90deg, var(--color-black) 0 0.5rem, transparent 0.5rem 1rem);
+}
+
+.film-strip::before {
+    top: 0.375rem;
+}
+
+.film-strip::after {
+    bottom: 0.375rem;
+}
+
+.film-strip-track {
+    display: flex;
+    width: max-content;
+    animation: film-roll 45s linear infinite;
+}
+
+.film-strip:hover .film-strip-track {
+    animation-play-state: paused;
+}
+
+.film-strip-list {
+    display: flex;
+    flex: none;
+}
+
+.film-strip-list li {
+    padding-right: 2rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.25rem, 2.4vw, 1.625rem);
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--color-black);
+}
+
+.film-strip-list li::after {
+    content: "\2726";
+    margin-left: 2rem;
+    font-size: 0.75em;
+    vertical-align: 0.15em;
+}
+
+.film-strip-list cite {
+    font-style: normal;
+}
+
+@keyframes film-roll {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Reduced motion: no rolling; the strip can be scrolled sideways instead */
+@media (prefers-reduced-motion: reduce) {
+    .film-strip {
+        overflow-x: auto;
+    }
+
+    .film-strip-track {
+        animation: none;
+    }
+}
+
+/* ==========================================================================
+   Offers: three dark cards laid out as a path (plan it, fix it, grow it).
+   Phones and tablets: a horizontal swipe row with snap points.
+   Desktop: three columns, the signature service raised in the middle.
+   ========================================================================== */
+.offers {
+    position: relative;
+    padding: calc(clamp(2.5rem, 7vw, 6rem) + clamp(2.5rem, 5vw, 4rem)) 0 clamp(4rem, 8vw, 7rem);
+    color: var(--color-black);
+    background-color: var(--color-light);
+}
+
+/* Swipe row: cards run edge to edge and snap into place */
+.offers-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min(86%, 23rem);
+    gap: 1rem;
+    margin-inline: calc(-1 * var(--gutter));
+    padding: 1rem var(--gutter) 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+}
+
+.offers-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.offer-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 1.25rem;
+    color: var(--color-white);
+    background-color: var(--color-ink);
+    box-shadow: 0 1.5rem 3rem -1.75rem rgba(0, 0, 0, 0.55);
+    scroll-snap-align: start;
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+
+.offer-card--featured {
+    box-shadow: 0 0 0 2px var(--color-green), 0 1.5rem 3rem -1.75rem rgba(0, 0, 0, 0.55);
+}
+
+/* Photo with a green stripe (and three slashes) along its bottom edge */
+.offer-media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
+
+.offer-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease);
+}
+
+.offer-media::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 62%;
+    height: 0.5rem;
+    background: linear-gradient(110deg,
+        var(--color-green) 0 84%, transparent 84% 86.5%,
+        var(--color-green) 86.5% 90%, transparent 90% 92.5%,
+        var(--color-green) 92.5% 96%, transparent 96%);
+    transition: width 0.6s var(--ease);
+}
+
+.offer-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-black);
+    background-color: var(--color-green);
+}
+
+.offer-body {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 3.5rem 1.5rem 1.5rem;
+}
+
+/* Her typewriter step icon, overlapping the photo's edge */
+.offer-icon {
+    position: absolute;
+    top: -3rem;
+    left: 1.25rem;
+    width: 5.5rem;
+    height: 5.5rem;
+    filter: drop-shadow(0 0.75rem 1rem rgba(0, 0, 0, 0.5));
+    transition: transform 0.5s var(--ease);
+}
+
+/* Big outlined step number; drawn by CSS so it stays decorative */
+.offer-number {
+    position: absolute;
+    top: 0.75rem;
+    right: 1.25rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 5.5rem;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.offer-number::before {
+    content: attr(data-num);
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.16);
+    transition: -webkit-text-stroke-color 0.5s ease;
+}
+
+.offer-step {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-green);
+}
+
+.offer-step::before {
+    content: "";
+    width: 1.5rem;
+    height: 2px;
+    background-color: currentColor;
+}
+
+.offer-title {
+    margin-top: 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.125rem, 6vw, 2.5rem);
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.offer-question {
+    margin-top: 0.875rem;
+    font-weight: 600;
+    font-size: 1.0625rem;
+}
+
+.offer-text {
+    margin-top: 0.4rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+}
+
+.offer-points {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 1.125rem;
+}
+
+.offer-points li {
+    position: relative;
+    padding-left: 1.6rem;
+    font-size: 0.9375rem;
+    line-height: 1.45;
+}
+
+/* Small green check */
+.offer-points li::before {
+    content: "";
+    position: absolute;
+    left: 0.15rem;
+    top: 0.3em;
+    width: 0.45rem;
+    height: 0.8rem;
+    border: solid var(--color-green);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Price on top, full-width button under it (same on every card) */
+.offer-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 1.5rem;
+}
+
+.offer-points + .offer-footer {
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--color-line);
+}
+
+.offer-price {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.875rem;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--color-green);
+}
+
+.offer-price-label {
+    display: block;
+    margin-bottom: 0.2rem;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+}
+
+.offer-btn {
+    min-height: 3rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9375rem;
+}
+
+/* Swipe hint + position dots (phones and tablets only) */
+.offers-swipe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--color-text-dark);
+}
+
+.offers-dots {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.offers-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background-color: #b9c0bc;
+    transition: width 0.3s var(--ease), background-color 0.3s ease;
+}
+
+.offers-dot.is-active {
+    width: 1.5rem;
+    background-color: var(--color-black);
+}
+
+/* Hover (and keyboard focus inside a card): lift, zoom, stripe runs full
+   width, icon tilts and the step number lights up green */
+@media (hover: hover) {
+    .offer-card:hover {
+        transform: translateY(-0.5rem);
+        box-shadow: 0 2rem 3.5rem -1.5rem rgba(0, 0, 0, 0.6), 0 0 0 2px var(--color-green);
+    }
+}
+
+.offer-card:focus-within {
+    box-shadow: 0 2rem 3.5rem -1.5rem rgba(0, 0, 0, 0.6), 0 0 0 2px var(--color-green);
+}
+
+.offer-card:hover .offer-media img,
+.offer-card:focus-within .offer-media img {
+    transform: scale(1.06);
+}
+
+.offer-card:hover .offer-media::after,
+.offer-card:focus-within .offer-media::after {
+    width: 100%;
+}
+
+.offer-card:hover .offer-icon,
+.offer-card:focus-within .offer-icon {
+    transform: rotate(-8deg) scale(1.06);
+}
+
+.offer-card:hover .offer-number::before,
+.offer-card:focus-within .offer-number::before {
+    -webkit-text-stroke-color: var(--color-green);
+}
+
+@media (min-width: 64rem) {
+    .offers-grid {
+        grid-auto-flow: row;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+        align-items: start;
+        margin-inline: 0;
+        padding: 1rem 0 0;
+        overflow: visible;
+    }
+
+    /* The signature service sits higher than the other two */
+    .offer-card:not(.offer-card--featured) {
+        margin-top: 2.5rem;
+    }
+
+    .offers-swipe {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   Greenlight or Pass: who TPP is (and isn't) for.
+   The Greenlight card is a tick-list; script.js fills the verdict meter,
+   claps the clapperboard and throws confetti at 4/4. The Pass card gets a
+   rubber stamp that slams down when the section scrolls into view.
+   ========================================================================== */
+.verdict {
+    position: relative;
+    overflow: hidden;
+    padding: calc(clamp(2.5rem, 7vw, 6rem) + clamp(2.5rem, 5vw, 4rem)) 0 clamp(4rem, 8vw, 7rem);
+    color: var(--color-white);
+    background-color: var(--color-black);
+}
+
+/* Soft green light behind the Greenlight card */
+.verdict::before {
+    content: "";
+    position: absolute;
+    left: -10%;
+    bottom: -20%;
+    width: 70%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(56, 229, 139, 0.18), transparent);
+    pointer-events: none;
+}
+
+/* Green stage light behind the heading, like the hero */
+.verdict::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: min(140vw, 80rem);
+    height: 46rem;
+    background: radial-gradient(ellipse at 50% 35%, rgba(56, 229, 139, 0.16), rgba(56, 229, 139, 0.04) 45%, transparent 70%);
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.verdict .container {
+    position: relative;
+}
+
+.verdict-grid {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 70rem;
+    margin-inline: auto;
+}
+
+.verdict-card {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    border-radius: 1.5rem;
+}
+
+.verdict-card--greenlight {
+    color: var(--color-black);
+    background-color: var(--color-green);
+    box-shadow: 0 2rem 4rem -2rem rgba(56, 229, 139, 0.55);
+}
+
+.verdict-card--pass {
+    border: 1px solid var(--color-line);
+    background-color: var(--color-ink);
+}
+
+.verdict-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-green);
+    background-color: var(--color-black);
+}
+
+.verdict-badge--pass {
+    color: var(--color-white);
+    background-color: #232b27;
+}
+
+.verdict-title {
+    max-width: 14ch;
+    margin-top: 1rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.25rem, 5vw, 3.25rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+}
+
+.verdict-hint {
+    margin-top: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+}
+
+/* Two even lines ("TPP isn't / for you if…") that stay clear of the stamp */
+.verdict-card--pass .verdict-title {
+    max-width: 10.5ch;
+}
+
+.verdict-card--pass .verdict-hint {
+    color: var(--color-text-muted);
+}
+
+.verdict-list {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+/* Clapperboard (Greenlight card): the arm snaps shut when the section comes
+   into view, and again (staying shut) at 4/4 */
+.clapper {
+    position: absolute;
+    top: clamp(1.25rem, 3vw, 2rem);
+    right: clamp(1.25rem, 3vw, 2rem);
+    width: clamp(3.25rem, 7vw, 4.25rem);
+    fill: var(--color-black);
+    overflow: visible;
+}
+
+.clapper-stripes {
+    fill: none;
+    stroke: var(--color-green);
+    stroke-width: 3;
+}
+
+.clapper-arm {
+    transform-box: fill-box;
+    transform-origin: 0% 100%;
+    transform: rotate(-18deg);
+    transition: transform 0.35s var(--ease);
+}
+
+.verdict-card.is-clapping .clapper-arm {
+    animation: clap 0.6s var(--ease);
+}
+
+.verdict-card.is-greenlit .clapper-arm {
+    transform: rotate(0deg);
+}
+
+@keyframes clap {
+    40% { transform: rotate(0deg); }
+    55% { transform: rotate(-7deg); }
+    70% { transform: rotate(0deg); }
+}
+
+/* Tick-list rows: real checkboxes, styled as big tappable rows */
+.verdict-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    padding: 0.9rem 1rem;
+    border: 2px solid rgba(0, 0, 0, 0.16);
+    border-radius: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s var(--ease);
+}
+
+.verdict-check:hover {
+    border-color: var(--color-black);
+    transform: translateX(0.25rem);
+}
+
+.verdict-check.is-checked {
+    color: var(--color-white);
+    border-color: var(--color-black);
+    background-color: var(--color-black);
+}
+
+.verdict-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.verdict-box {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-top: -0.05rem;
+    border: 2px solid currentColor;
+    border-radius: 0.45rem;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.verdict-box svg {
+    width: 1.05rem;
+    height: 1.05rem;
+    fill: none;
+    stroke: var(--color-black);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 0.35s var(--ease) 0.05s;
+}
+
+.verdict-check.is-checked .verdict-box {
+    border-color: var(--color-green);
+    background-color: var(--color-green);
+}
+
+.verdict-check.is-checked .verdict-box svg {
+    stroke-dashoffset: 0;
+}
+
+.verdict-input:focus-visible + .verdict-box {
+    outline: 3px solid var(--color-black);
+    outline-offset: 3px;
+}
+
+.verdict-check.is-checked .verdict-input:focus-visible + .verdict-box {
+    outline-color: var(--color-white);
+}
+
+.verdict-label {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* Pass rows: hovering draws a strike-through across the line, like a cut */
+.verdict-item--pass {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--color-line);
+}
+
+.verdict-item--pass:last-child {
+    border-bottom: 0;
+}
+
+.verdict-x {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background-color: #232b27;
+}
+
+.verdict-x svg {
+    width: 0.8rem;
+    height: 0.8rem;
+    fill: none;
+    stroke: var(--color-white);
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+
+.verdict-item--pass .verdict-label {
+    background: linear-gradient(currentColor, currentColor) 0 58% / 0% 2px no-repeat;
+    transition: background-size 0.45s var(--ease);
+}
+
+.verdict-item--pass:hover .verdict-label {
+    background-size: 100% 2px;
+}
+
+/* Rubber stamp (drawn by CSS, so it stays decorative) */
+.verdict-stamp {
+    position: absolute;
+    top: clamp(1.25rem, 3vw, 2rem);
+    right: clamp(1rem, 3vw, 1.75rem);
+    rotate: -14deg;
+    pointer-events: none;
+}
+
+.verdict-stamp::before {
+    content: "Pass";
+    display: block;
+    padding: 0.1rem 0.75rem 0.2rem;
+    border: 4px solid currentColor;
+    border-radius: 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.625rem, 5vw, 2.75rem);
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.82);
+    /* worn-ink texture */
+    -webkit-mask-image: repeating-radial-gradient(circle at 30% 40%, #000 0 2px, rgba(0, 0, 0, 0.55) 3px 4px);
+    mask-image: repeating-radial-gradient(circle at 30% 40%, #000 0 2px, rgba(0, 0, 0, 0.55) 3px 4px);
+}
+
+/* Verdict meter */
+.verdict-meter {
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 2px dashed rgba(0, 0, 0, 0.3);
+}
+
+.verdict-meter-top {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.verdict-bar {
+    height: 0.75rem;
+    margin-top: 0.6rem;
+    overflow: hidden;
+    border-radius: 999px;
+    background-color: rgba(0, 0, 0, 0.16);
+}
+
+.verdict-bar-fill {
+    display: block;
+    width: calc(var(--progress, 0) * 100%);
+    height: 100%;
+    border-radius: inherit;
+    background-color: var(--color-black);
+    transition: width 0.5s var(--ease);
+}
+
+.verdict-status {
+    margin-top: 0.75rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.375rem, 3vw, 1.75rem);
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.verdict-card.is-greenlit .verdict-status {
+    animation: verdict-pop 0.6s var(--ease);
+}
+
+@keyframes verdict-pop {
+    40% { transform: scale(1.06); }
+}
+
+/* Confetti burst at 4/4 (pieces are added by script.js) */
+.verdict-confetti {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.confetti-piece {
+    position: absolute;
+    left: 50%;
+    bottom: 18%;
+    width: 0.5rem;
+    height: 0.8rem;
+    border-radius: 2px;
+    background-color: var(--c);
+    animation: confetti 1.2s cubic-bezier(0.15, 0.6, 0.35, 1) forwards;
+}
+
+@keyframes confetti {
+    to {
+        transform: translate(var(--x), var(--y)) rotate(var(--r));
+        opacity: 0;
+    }
+}
+
+/* "Sounds like you?" */
+.verdict-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+    text-align: center;
+}
+
+.verdict-cta-text {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.verdict-cta-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 22rem;
+}
+
+/* Scroll-in: rows slide up one by one, the stamp slams down.
+   script.js adds .reveal-ready to <html> (so nothing hides without JS)
+   and .is-in to the section once it's on screen. */
+.reveal-ready .verdict-item,
+.reveal-ready .verdict-meter {
+    filter: opacity(0);
+    transform: translateY(0.75rem);
+    transition: filter 0.5s ease, transform 0.6s var(--ease);
+}
+
+.reveal-ready .verdict-stamp {
+    filter: opacity(0);
+}
+
+.verdict.is-in .verdict-item,
+.verdict.is-in .verdict-meter {
+    filter: none;
+    transform: none;
+}
+
+.verdict.is-in .verdict-stamp {
+    animation: stamp-slam 0.55s cubic-bezier(0.3, 1.4, 0.5, 1) 0.9s both;
+}
+
+.verdict.is-in .verdict-card--pass {
+    animation: card-thud 0.35s ease 1.25s;
+}
+
+.verdict.is-in .verdict-card--greenlight .verdict-item:nth-child(1) { transition-delay: 0.1s; }
+.verdict.is-in .verdict-card--greenlight .verdict-item:nth-child(2) { transition-delay: 0.2s; }
+.verdict.is-in .verdict-card--greenlight .verdict-item:nth-child(3) { transition-delay: 0.3s; }
+.verdict.is-in .verdict-card--greenlight .verdict-item:nth-child(4) { transition-delay: 0.4s; }
+.verdict.is-in .verdict-meter { transition-delay: 0.5s; }
+.verdict.is-in .verdict-card--pass .verdict-item:nth-child(1) { transition-delay: 0.2s; }
+.verdict.is-in .verdict-card--pass .verdict-item:nth-child(2) { transition-delay: 0.3s; }
+.verdict.is-in .verdict-card--pass .verdict-item:nth-child(3) { transition-delay: 0.4s; }
+.verdict.is-in .verdict-card--pass .verdict-item:nth-child(4) { transition-delay: 0.5s; }
+
+@keyframes stamp-slam {
+    from {
+        filter: opacity(0);
+        transform: scale(2.6);
+    }
+
+    to {
+        filter: none;
+        transform: scale(1);
+    }
+}
+
+@keyframes card-thud {
+    30% { transform: translateY(3px); }
+    60% { transform: translateY(-1px); }
+}
+
+@media (min-width: 30rem) {
+    .verdict-cta-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: none;
+        width: auto;
+    }
+}
+
+@media (min-width: 56rem) {
+    .verdict-grid {
+        grid-template-columns: 1.1fr 1fr;
+        align-items: start;
+    }
+
+    /* The Pass card sits a little lower, like a second page */
+    .verdict-card--pass {
+        margin-top: 3rem;
+    }
+}
+/* ==========================================================================
+   Success stories: white half with the quote slider, green half with a
+   framed visual that swaps with each story (script.js). The black wave at
+   the top only shows over the green half, carrying on from the section above.
+   ========================================================================== */
+.stories {
+    position: relative;
+    color: var(--color-black);
+    background-color: var(--color-white);
+}
+
+.stories .divider {
+    z-index: 1;
+}
+
+.stories-inner {
+    display: grid;
+}
+
+.stories-content {
+    width: 100%;
+    max-width: 40rem;
+    margin-inline: auto;
+    padding: clamp(3rem, 8vw, 6rem) var(--gutter) 3rem;
+}
+
+/* Room for the light wave at the bottom of the section */
+.stories-visual {
+    padding-bottom: calc(clamp(2.5rem, 7vw, 5rem) + clamp(2.5rem, 7vw, 6rem));
+}
+
+.stories-title {
+    text-align: left;
+}
+
+/* Quote card: dark "speech bubble" pointing down at the author */
+.story-slides {
+    margin-top: 2rem;
+}
+
+.story-quote {
+    position: relative;
+    padding: clamp(1.5rem, 4vw, 2.25rem);
+    border-radius: 1rem;
+    color: var(--color-white);
+    background-color: var(--color-ink);
+    box-shadow: 0 1.5rem 3rem -1.75rem rgba(0, 0, 0, 0.55);
+}
+
+.story-quote::after {
+    content: "";
+    position: absolute;
+    left: 2.5rem;
+    bottom: -0.75rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--color-ink);
+    transform: rotate(45deg);
+}
+
+.story-headline {
+    margin-bottom: 0.75rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.5rem, 3.5vw, 1.875rem);
+    line-height: 1.05;
+    text-transform: uppercase;
+}
+
+.story-headline cite {
+    font-style: normal;
+}
+
+.story-quote p:not(.story-headline) {
+    font-size: clamp(1rem, 1.6vw, 1.125rem);
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+}
+
+.story-stars {
+    display: block;
+    color: var(--color-green);
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    letter-spacing: 0.2em;
+}
+
+.story-stars::before {
+    content: "\2605\2605\2605\2605\2605";
+}
+
+.story-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.75rem;
+    padding-left: 1rem;
+}
+
+.story-avatar {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 3px solid var(--color-black);
+    border-radius: 50%;
+    outline: 2px solid var(--color-green);
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--color-black);
+    background-color: var(--color-green);
+}
+
+.story-name {
+    display: block;
+    font-size: 1.125rem;
+}
+
+.story-role {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--color-text-dark);
+}
+
+.story-role cite {
+    font-style: italic;
+}
+
+/* Slide change: the incoming story rises in */
+.story.is-active {
+    animation: story-in 0.6s var(--ease);
+}
+
+@keyframes story-in {
+    from {
+        filter: opacity(0);
+        transform: translateY(1rem);
+    }
+}
+
+/* Dots: real buttons, 44px tap targets */
+.story-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 2rem;
+}
+
+.story-dot {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+}
+
+.story-dot::before {
+    content: "";
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: #b9c0bc;
+    transition: width 0.3s var(--ease), background-color 0.3s ease;
+}
+
+.story-dot:hover::before {
+    background-color: var(--color-text-dark);
+}
+
+.story-dot.is-active::before {
+    width: 2rem;
+    background-color: var(--color-black);
+}
+
+/* Previous / next arrows */
+.story-arrow {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    color: var(--color-white);
+    background-color: var(--color-black);
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s var(--ease);
+}
+
+.story-arrow:hover {
+    color: var(--color-black);
+    background-color: var(--color-green);
+}
+
+#story-prev:hover { transform: translateX(-2px); }
+#story-next:hover { transform: translateX(2px); }
+
+.story-arrow svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Pause/play for the automatic rotation */
+.story-pause {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-left: 0.5rem;
+    border: 2px solid #d4d9d6;
+    border-radius: 50%;
+    transition: border-color 0.25s ease;
+}
+
+.story-pause:hover {
+    border-color: var(--color-black);
+}
+
+.story-pause svg {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.story-play-icon,
+.story-pause[aria-pressed="true"] .story-pause-icon {
+    display: none;
+}
+
+.story-pause[aria-pressed="true"] .story-play-icon {
+    display: block;
+    fill: currentColor;
+}
+
+.stories :focus-visible {
+    outline-color: var(--color-black);
+}
+
+/* Green panel with a framed visual */
+.stories-visual {
+    display: grid;
+    place-items: center;
+    padding: clamp(2.5rem, 7vw, 5rem) var(--gutter);
+    background-color: var(--color-green);
+}
+
+.story-frame {
+    position: relative;
+    width: min(100%, 30rem);
+    aspect-ratio: 5 / 6;
+    padding: 0.875rem;
+    border-radius: 1.25rem;
+    /* striped white mat, like a photo frame */
+    background: repeating-linear-gradient(135deg, #ffffff 0 6px, #eef1ef 6px 12px);
+    box-shadow: 0 2rem 4rem -2rem rgba(0, 0, 0, 0.55);
+}
+
+.story-visual {
+    position: absolute;
+    inset: 0.875rem;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    background: radial-gradient(circle at 50% 35%, #2a332e, var(--color-ink) 70%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.story-visual.is-active {
+    opacity: 1;
+}
+
+.story-visual--photo img {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 92%;
+    height: auto;
+    transform: translateX(-50%);
+}
+
+.story-wins {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.4rem;
+}
+
+.story-wins cite {
+    font-style: normal;
+}
+
+.story-wins li {
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.6875rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-black);
+    background-color: var(--color-green);
+}
+
+/* Black stat box over the frame's corner */
+.story-badge {
+    position: absolute;
+    left: -0.75rem;
+    bottom: 2rem;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.125rem 1.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-black);
+    box-shadow: 0 1rem 2rem -1rem rgba(0, 0, 0, 0.7);
+}
+
+.story-badge-number {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.75rem;
+    line-height: 1;
+    color: var(--color-green);
+}
+
+.story-badge-label {
+    max-width: 8rem;
+    margin-top: 0.3rem;
+    font-size: 0.8125rem;
+    line-height: 1.3;
+    text-align: center;
+    color: var(--color-white);
+}
+
+@media (min-width: 64rem) {
+    .stories-inner {
+        grid-template-columns: 1.1fr 1fr;
+        min-height: 44rem;
+    }
+
+    .stories-content {
+        align-self: center;
+        max-width: 38rem;
+        margin: 0 0 0 auto;
+        padding: 7rem clamp(2rem, 4vw, 4rem) 5rem var(--gutter);
+    }
+
+    .stories-visual {
+        padding: 7rem 0 calc(5rem + clamp(2.5rem, 7vw, 6rem)) clamp(2rem, 4vw, 4rem);
+        justify-items: start;
+    }
+
+    .story-frame {
+        width: min(100%, 34rem);
+    }
+}
+
+/* ==========================================================================
+   About: photo collage (Shannan, the team, a "10+ years" badge) beside her
+   story. Light background with faint diagonal lines, like the reference.
+   ========================================================================== */
+.about {
+    position: relative;
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(4rem, 8vw, 7rem);
+    color: var(--color-black);
+    background-color: var(--color-light);
+    background-image: repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.025) 0 1px, transparent 1px 10px);
+}
+
+.about-inner {
+    display: grid;
+    gap: clamp(3rem, 6vw, 5rem);
+}
+
+/* Collage */
+.about-media {
+    position: relative;
+    width: min(100%, 34rem);
+    margin-inline: auto;
+    padding: 0 0 4.5rem 3rem;
+}
+
+.about-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 1.25rem;
+    box-shadow: 0 2rem 4rem -2rem rgba(0, 0, 0, 0.45);
+}
+
+.about-photo-small {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 44%;
+    height: auto;
+    border: 0.5rem solid var(--color-white);
+    border-radius: 1rem;
+    box-shadow: 0 1.5rem 3rem -1.5rem rgba(0, 0, 0, 0.5);
+}
+
+/* Green circle badge with a white ring, slowly rotating dashed edge */
+.about-badge {
+    position: absolute;
+    left: 34%;
+    top: 52%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: clamp(7rem, 22vw, 9rem);
+    aspect-ratio: 1;
+    border: 0.4rem solid var(--color-white);
+    border-radius: 50%;
+    text-align: center;
+    color: var(--color-black);
+    background-color: var(--color-green);
+    box-shadow: 0 1.25rem 2.5rem -1rem rgba(0, 0, 0, 0.45);
+}
+
+.about-badge::before {
+    content: "";
+    position: absolute;
+    inset: 0.4rem;
+    border: 1.5px dashed rgba(0, 0, 0, 0.45);
+    border-radius: 50%;
+    animation: badge-spin 18s linear infinite;
+}
+
+@keyframes badge-spin {
+    to { transform: rotate(360deg); }
+}
+
+.about-badge-number {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.25rem, 7vw, 3rem);
+    line-height: 1;
+}
+
+.about-badge-label {
+    max-width: 6rem;
+    margin-top: 0.2rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.6875rem;
+    line-height: 1.25;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* Story */
+.about-title {
+    font-size: clamp(2.5rem, 6.5vw, 4.25rem);
+}
+
+.about-text {
+    margin-top: 1.25rem;
+    font-size: clamp(1rem, 1.4vw, 1.125rem);
+    line-height: 1.7;
+    color: var(--color-text-dark);
+}
+
+.about-text + .about-text {
+    margin-top: 0.75rem;
+}
+
+.about-points {
+    display: grid;
+    gap: 0.875rem 1.5rem;
+    margin-top: 1.75rem;
+}
+
+.about-points li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.about-points svg {
+    flex: none;
+    width: 1.375rem;
+    height: 1.375rem;
+    fill: none;
+    stroke: var(--color-black);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.about-points svg circle {
+    fill: var(--color-green);
+    stroke: none;
+}
+
+.about-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem 1.75rem;
+    margin-top: 2.25rem;
+}
+
+/* On light backgrounds the primary button's white sweep needs a black edge */
+.about .btn-primary:hover,
+.about .btn-primary:focus-visible {
+    border-color: var(--color-black);
+}
+
+.about :focus-visible {
+    outline-color: var(--color-black);
+}
+
+.about-founder {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+}
+
+.about-founder img {
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 3px solid var(--color-green);
+    border-radius: 50%;
+}
+
+.about-founder-name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.375rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.about-founder-role {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--color-text-dark);
+}
+
+@media (min-width: 40rem) {
+    .about-points {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 64rem) {
+    .about-inner {
+        grid-template-columns: 1fr 1.05fr;
+        align-items: center;
+    }
+
+    .about-media {
+        margin: 0;
+    }
+}
+
+/* ==========================================================================
+   Watch: the video still fills the section edge to edge, darkened, with a
+   giant headline and the play button over the middle. Pressing play turns
+   the whole section into the 16:9 player.
+   ========================================================================== */
+.watch {
+    position: relative;
+    display: grid;
+    min-height: clamp(32rem, 56.25vw, 48rem);
+    overflow: hidden;
+    color: var(--color-white);
+    background-color: var(--color-black);
+}
+
+.watch-bg {
+    position: absolute;
+    inset: 0;
+}
+
+.watch-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(6px);
+    transform: scale(1.08);
+}
+
+/* Dark wash so the headline reads over the still */
+.watch-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.82));
+}
+
+.watch .divider {
+    z-index: 1;
+}
+
+.watch-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: calc(clamp(2.5rem, 7vw, 6rem) + 2rem) var(--gutter) 4rem;
+    text-align: center;
+}
+
+/* Huge one-line headline ("PEN." in green), play button centered underneath */
+.watch-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(3.25rem, 13vw, 11rem);
+    white-space: nowrap;
+    line-height: 0.82;
+    text-transform: uppercase;
+}
+
+.watch-line {
+    display: inline;
+}
+
+.watch-line:last-child {
+    color: var(--color-green);
+}
+
+.watch-play {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: clamp(5rem, 12vw, 8rem);
+    aspect-ratio: 1;
+    margin-top: clamp(1.75rem, 4vw, 2.75rem);
+    border-radius: 50%;
+    background-color: var(--color-green);
+    box-shadow: 0 1.5rem 3rem -1rem rgba(0, 0, 0, 0.7);
+    transition: transform 0.4s var(--ease);
+}
+
+.watch-play::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(56, 229, 139, 0.7);
+    animation: pulse-ring 2.2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+    70% { box-shadow: 0 0 0 1.75rem rgba(56, 229, 139, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(56, 229, 139, 0); }
+}
+
+.watch-play svg {
+    width: 38%;
+    margin-left: 8%;
+    fill: var(--color-black);
+}
+
+.watch-play:hover,
+.watch-play:focus-visible {
+    transform: scale(1.1);
+}
+
+.watch-play:focus-visible {
+    outline: 4px solid var(--color-white);
+    outline-offset: 6px;
+}
+
+.watch-text {
+    max-width: 34rem;
+    margin-top: clamp(1.5rem, 3vw, 2.25rem);
+    font-size: clamp(1rem, 1.6vw, 1.1875rem);
+    line-height: 1.6;
+    color: var(--color-white);
+}
+
+.watch-length {
+    display: block;
+    margin-top: 0.5rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-green);
+}
+
+/* Video pop-up */
+.video-dialog {
+    width: min(92vw, 64rem);
+    max-width: none;
+    margin: auto;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    border-radius: 1rem;
+    background-color: var(--color-black);
+    box-shadow: 0 0 0 3px var(--color-green), 0 2rem 5rem rgba(0, 0, 0, 0.6);
+}
+
+.video-dialog[open] {
+    animation: dialog-in 0.35s var(--ease);
+}
+
+@keyframes dialog-in {
+    from {
+        filter: opacity(0);
+        transform: scale(0.94);
+    }
+}
+
+.video-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.88);
+}
+
+.video-frame {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.video-frame iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.video-close {
+    position: absolute;
+    top: -3.5rem;
+    right: 0;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    font-size: 1.75rem;
+    line-height: 1;
+    color: var(--color-black);
+    background-color: var(--color-green);
+    transition: transform 0.25s var(--ease);
+}
+
+.video-close:hover {
+    transform: rotate(90deg);
+}
+
+.video-close:focus-visible {
+    outline: 3px solid var(--color-white);
+    outline-offset: 3px;
+}
+
+/* Room for the white wave at the bottom of the video section */
+.watch-content {
+    padding-bottom: calc(clamp(2.5rem, 7vw, 6rem) + 3rem);
+}
+
+/* ==========================================================================
+   FAQ: heading and boxed accordion (native <details>) on the left, a cut-out
+   of Shannan on the right. The open question's bar turns green.
+   ========================================================================== */
+.faq {
+    padding: clamp(2rem, 5vw, 4rem) 0 0;
+    color: var(--color-black);
+    background-color: var(--color-white);
+}
+
+.faq-inner {
+    display: grid;
+    gap: 2.5rem;
+}
+
+.faq-main {
+    padding-bottom: clamp(1rem, 4vw, 3rem);
+}
+
+.faq-title {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+}
+
+.faq-intro {
+    margin-top: 1rem;
+    font-size: 1.125rem;
+    color: var(--color-text-dark);
+}
+
+/* Topic tabs: pills that wrap onto a second line on narrow phones */
+.faq-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.faq-tab {
+    flex: none;
+    min-height: 2.75rem;
+    padding: 0.6rem 1.125rem;
+    border: 2px solid var(--color-black);
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    white-space: nowrap;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.faq-tab:hover {
+    border-color: var(--color-green);
+    background-color: var(--color-green);
+}
+
+.faq-tab[aria-selected="true"] {
+    color: var(--color-white);
+    border-color: var(--color-black);
+    background-color: var(--color-black);
+}
+
+.faq-tab:focus-visible {
+    outline: 3px solid var(--color-black);
+    outline-offset: 2px;
+}
+
+.faq-list {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    animation: faq-open 0.4s var(--ease);
+}
+
+.faq-item {
+    overflow: hidden;
+    border: 1px solid #dfe3e1;
+    border-radius: 0.75rem;
+    background-color: var(--color-white);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: var(--color-black);
+}
+
+.faq-item[open] {
+    border-color: var(--color-green);
+    box-shadow: 0 1.25rem 2.5rem -1.75rem rgba(0, 0, 0, 0.4);
+}
+
+.faq-question {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.125rem 1.25rem;
+    list-style: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question::-webkit-details-marker {
+    display: none;
+}
+
+/* Open: green bar with black text */
+.faq-item[open] .faq-question {
+    background-color: var(--color-green);
+}
+
+.faq-num {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    color: var(--color-text-dark);
+}
+
+.faq-item[open] .faq-num {
+    color: var(--color-black);
+}
+
+.faq-q {
+    font-weight: 600;
+    font-size: clamp(1.0625rem, 1.6vw, 1.1875rem);
+    line-height: 1.35;
+}
+
+/* Plus that turns into a minus */
+.faq-icon {
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: rotate 0.4s var(--ease);
+}
+
+.faq-icon::before,
+.faq-icon::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1.1rem;
+    height: 2px;
+    background-color: var(--color-black);
+    translate: -50% -50%;
+    transition: rotate 0.3s var(--ease);
+}
+
+.faq-icon::after {
+    rotate: 90deg;
+}
+
+.faq-item[open] .faq-icon {
+    rotate: 180deg;
+}
+
+.faq-item[open] .faq-icon::after {
+    rotate: 0deg;
+}
+
+.faq-question:focus-visible {
+    outline: 3px solid var(--color-black);
+    outline-offset: -3px;
+}
+
+.faq-answer {
+    padding: 1.25rem 1.25rem 1.5rem 3.4rem;
+    color: var(--color-text-dark);
+    line-height: 1.7;
+}
+
+.faq-item[open] .faq-answer {
+    animation: faq-open 0.4s var(--ease);
+}
+
+@keyframes faq-open {
+    from {
+        filter: opacity(0);
+        transform: translateY(-0.4rem);
+    }
+}
+
+.faq-answer p + p,
+.faq-answer ul {
+    margin-top: 0.75rem;
+}
+
+.faq-answer ul {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.faq-answer li {
+    position: relative;
+    padding-left: 1.1rem;
+}
+
+.faq-answer li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background-color: var(--color-green);
+}
+
+.faq-answer strong {
+    color: var(--color-black);
+}
+
+.faq-more {
+    margin-top: 1.75rem;
+    color: var(--color-text-dark);
+}
+
+.faq-more a {
+    font-weight: 600;
+    color: var(--color-black);
+    text-decoration: underline;
+    text-decoration-color: var(--color-green);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 4px;
+}
+
+.faq-more a:focus-visible {
+    outline-color: var(--color-black);
+}
+
+/* Shannan, standing on a soft green circle at the bottom of the section */
+.faq-figure {
+    position: relative;
+    align-self: end;
+    width: min(100%, 28rem);
+    margin-inline: auto;
+}
+
+.faq-figure::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 8%;
+    width: 92%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--color-green);
+    opacity: 0.35;
+    transform: translateX(-50%);
+    animation: float-up 9s ease-in-out infinite;
+}
+
+.faq-figure img {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.faq-caption {
+    position: absolute;
+    left: 0;
+    bottom: 12%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    font-size: 0.8125rem;
+    line-height: 1.35;
+    color: var(--color-white);
+    background-color: var(--color-black);
+    box-shadow: 0 1rem 2rem -1rem rgba(0, 0, 0, 0.6);
+}
+
+.faq-caption strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    color: var(--color-green);
+}
+
+@media (min-width: 64rem) {
+    .faq-inner {
+        grid-template-columns: 1.25fr 1fr;
+        gap: 3rem;
+    }
+
+    .faq-main {
+        padding-bottom: clamp(4rem, 8vw, 7rem);
+    }
+
+    /* She sits beside the questions and stays in view while they scroll */
+    .faq-figure {
+        position: sticky;
+        top: calc(var(--header-h) + 2rem);
+        align-self: start;
+        width: 100%;
+        max-width: 32rem;
+        margin: 4rem 0 clamp(4rem, 8vw, 7rem) auto;
+    }
+}
+
+/* ==========================================================================
+   Final CTA: the film-set photo edge to edge under a dark wash, with a big
+   closing headline and the two next steps. A white wave carries in from the FAQ.
+   ========================================================================== */
+.final-cta {
+    position: relative;
+    display: grid;
+    align-items: center;
+    min-height: clamp(34rem, 52vw, 46rem);
+    overflow: hidden;
+    color: var(--color-white);
+    background-color: var(--color-black);
+}
+
+.final-cta-bg {
+    position: absolute;
+    inset: 0;
+}
+
+.final-cta-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.05);
+    transition: transform 8s linear;
+}
+
+.final-cta:hover .final-cta-bg img {
+    transform: scale(1.12);
+}
+
+.final-cta-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 55%, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.85));
+}
+
+.final-cta .divider {
+    z-index: 1;
+}
+
+.final-cta-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block: calc(clamp(2.5rem, 7vw, 6rem) + 3rem) clamp(4rem, 8vw, 6rem);
+    text-align: center;
+}
+
+.final-cta-title {
+    max-width: 14ch;
+    margin-top: 1.25rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(3.25rem, 9vw, 7.5rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+}
+
+.final-cta-text {
+    max-width: 36rem;
+    margin-top: 1.5rem;
+    font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+    line-height: 1.6;
+}
+
+.final-cta-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 22rem;
+    margin-top: 2.25rem;
+}
+
+.final-cta-note {
+    margin-top: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+@media (min-width: 30rem) {
+    .final-cta-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: none;
+        width: auto;
+    }
+}
+
+/* ==========================================================================
+   Contact: the team cut-out on two green circles (a soft one behind, a solid
+   brand-green one in front of it), general inquiry form on the right.
+   ========================================================================== */
+.contact {
+    position: relative;
+    padding: calc(clamp(2.5rem, 7vw, 6rem) + clamp(2rem, 4vw, 3rem)) 0 clamp(4rem, 8vw, 7rem);
+    overflow: hidden;
+    color: var(--color-black);
+    background-color: var(--color-light);
+}
+
+.contact-inner {
+    display: grid;
+    gap: 3rem;
+}
+
+.contact-figure {
+    position: relative;
+    width: min(100%, 30rem);
+    margin-inline: auto;
+}
+
+/* Soft circle (same as the FAQ) */
+.contact-figure::before,
+.contact-figure::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--color-green);
+}
+
+.contact-figure::before {
+    left: -6%;
+    top: 4%;
+    width: 86%;
+    aspect-ratio: 1;
+    opacity: 0.35;
+    animation: float-up 9s ease-in-out infinite;
+}
+
+/* Solid brand-green circle */
+.contact-figure::after {
+    right: -4%;
+    top: 30%;
+    width: 60%;
+    aspect-ratio: 1;
+    animation: float-down 7s ease-in-out infinite;
+}
+
+/* The circles drift slowly, in opposite directions */
+@keyframes float-up {
+    50% { translate: 0.75rem -1.5rem; }
+}
+
+@keyframes float-down {
+    50% { translate: -0.75rem 1.5rem; }
+}
+
+.contact-figure img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    -webkit-mask-image: linear-gradient(#000 80%, transparent 99%);
+    mask-image: linear-gradient(#000 80%, transparent 99%);
+}
+
+.contact-caption {
+    position: absolute;
+    left: 0;
+    bottom: 8%;
+    z-index: 2;
+    padding: 0.875rem 1.125rem;
+    border-radius: 0.875rem;
+    color: var(--color-white);
+    background-color: var(--color-black);
+    box-shadow: 0 1rem 2rem -1rem rgba(0, 0, 0, 0.6);
+}
+
+.contact-caption-title {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    color: var(--color-green);
+}
+
+.contact-caption a {
+    font-size: 0.875rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.contact-caption a:focus-visible {
+    outline-color: var(--color-green);
+}
+
+.contact-title {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+}
+
+.contact-intro {
+    max-width: 34rem;
+    margin-top: 1rem;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-text-dark);
+}
+
+/* Form */
+.contact-form {
+    display: grid;
+    gap: 1.125rem;
+    margin-top: 2rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border-radius: 1.25rem;
+    background-color: var(--color-white);
+    box-shadow: 0 1.5rem 3rem -2rem rgba(0, 0, 0, 0.4);
+}
+
+.form-row {
+    display: grid;
+    gap: 1.125rem;
+}
+
+.form-field {
+    display: grid;
+    gap: 0.4rem;
+}
+
+.form-field label {
+    font-weight: 600;
+    font-size: 0.9375rem;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.75rem 1rem;
+    border: 2px solid #c9cfcc;
+    border-radius: 0.75rem;
+    font: inherit;
+    color: var(--color-black);
+    background-color: var(--color-white);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form-field textarea {
+    resize: vertical;
+}
+
+.form-field input:hover,
+.form-field select:hover,
+.form-field textarea:hover {
+    border-color: #8d9692;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: var(--color-black);
+    box-shadow: 0 0 0 4px rgba(56, 229, 139, 0.55);
+}
+
+.form-field [aria-invalid="true"] {
+    border-color: #b3261e;
+}
+
+.form-error {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #b3261e;
+}
+
+.contact-submit {
+    justify-self: start;
+}
+
+.contact .btn-primary:hover,
+.contact .btn-primary:focus-visible {
+    border-color: var(--color-black);
+}
+
+.contact-submit:focus-visible {
+    outline-color: var(--color-black);
+}
+
+.form-status {
+    font-weight: 600;
+}
+
+.form-status:empty {
+    display: none;
+}
+
+@media (min-width: 40rem) {
+    .form-row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 64rem) {
+    .contact-inner {
+        grid-template-columns: 1fr 1.15fr;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    .contact-figure {
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+    padding: clamp(3.5rem, 7vw, 5.5rem) 0 1.5rem;
+    color: var(--color-white);
+    background-color: var(--color-black);
+    border-top: 4px solid var(--color-green);
+}
+
+.footer-top {
+    display: grid;
+    gap: 2.5rem;
+}
+
+.footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.75rem;
+    line-height: 1;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.footer-logo img {
+    width: 3.25rem;
+    height: 3.25rem;
+}
+
+.footer-tagline {
+    max-width: 22rem;
+    margin-top: 1rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+.footer-email {
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--color-green);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.footer-title {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-green);
+}
+
+.footer-links {
+    display: grid;
+    gap: 0.35rem;
+    margin-top: 1rem;
+}
+
+.footer-links a {
+    display: inline-block;
+    padding-block: 0.25rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    background: linear-gradient(var(--color-green), var(--color-green)) 0 100% / 0% 2px no-repeat;
+    transition: color 0.25s ease, background-size 0.35s var(--ease);
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+    color: var(--color-white);
+    background-size: 100% 2px;
+}
+
+.footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem 2rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-line);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+.footer-bottom a {
+    color: var(--color-white);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+@media (min-width: 40rem) {
+    .footer-top {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (min-width: 64rem) {
+    .footer-top {
+        grid-template-columns: 1.6fr repeat(3, minmax(0, 1fr));
+    }
+
+    .footer-brand {
+        grid-column: auto;
+    }
+}
+
+/* ==========================================================================
+   Newsletter strip (bright green) between the contact section and footer
+   ========================================================================== */
+.newsletter {
+    padding: clamp(2.5rem, 5vw, 3.5rem) 0;
+    color: var(--color-black);
+    background-color: var(--color-green);
+}
+
+.newsletter-inner {
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.newsletter-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+}
+
+.newsletter-text {
+    max-width: 32rem;
+    margin-top: 0.6rem;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.newsletter-form input {
+    flex: 1 1 14rem;
+    min-height: 3.25rem;
+    padding: 0.75rem 1.25rem;
+    border: 2px solid var(--color-black);
+    border-radius: 999px;
+    font: inherit;
+    color: var(--color-black);
+    background-color: var(--color-white);
+}
+
+.newsletter-form input::placeholder {
+    color: #5c6460;
+}
+
+.newsletter-form input:focus {
+    outline: 3px solid var(--color-black);
+    outline-offset: 2px;
+}
+
+.newsletter-form input[aria-invalid="true"] {
+    border-color: #8a1c15;
+}
+
+/* Black button that sweeps to white */
+.btn-dark-solid {
+    color: var(--color-white);
+    background-color: var(--color-black);
+    border-color: var(--color-black);
+    transition: color 0.45s var(--ease);
+}
+
+.btn-dark-solid::before {
+    background-color: var(--color-white);
+}
+
+.btn-dark-solid:hover,
+.btn-dark-solid:focus-visible {
+    color: var(--color-black);
+}
+
+.newsletter .btn:focus-visible {
+    outline-color: var(--color-black);
+}
+
+.newsletter-status {
+    flex-basis: 100%;
+    font-weight: 600;
+}
+
+.newsletter-status:empty {
+    display: none;
+}
+
+@media (min-width: 64rem) {
+    .newsletter-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+}
