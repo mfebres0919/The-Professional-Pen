@@ -553,6 +553,8 @@ button {
     gap: 2rem;
     padding: 1rem var(--gutter) 2.5rem;
     overflow-y: auto;
+    overscroll-behavior: contain;          /* scrolling the menu doesn't move the page behind it */
+    -webkit-overflow-scrolling: touch;
     border-top: 1px solid #e6e8e7;
     color: var(--color-black);
     background-color: var(--color-white);
