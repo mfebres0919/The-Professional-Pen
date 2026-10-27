@@ -530,3 +530,53 @@ document.querySelectorAll(".particles").forEach((canvas) => {
         status.textContent = "Your email app should open with your signup ready to send.";
     });
 })();
+
+/* ---------- Scroll fades ----------
+   Each section's content fades in as it scrolls into view and back out as it
+   leaves, so it plays again on the way back. The hero is left alone (it's on
+   screen when the page opens). Off with reduced motion. */
+(function () {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!("IntersectionObserver" in window)) return;
+
+    // [selector, direction, stagger in seconds between matches]
+    const groups = [
+        [".offers .section-header", "up", 0],
+        [".offer-card", "up", 0.12],
+        [".verdict .section-header", "up", 0],
+        [".verdict-card--greenlight", "left", 0],
+        [".verdict-card--pass", "right", 0],
+        [".verdict-cta", "up", 0],
+        [".stories-content", "left", 0],
+        [".story-frame", "right", 0],
+        [".about-media", "left", 0],
+        [".about-content", "right", 0],
+        [".watch-content", "up", 0],
+        [".faq-main", "left", 0],
+        [".faq-figure", "right", 0],
+        [".final-cta-top", "up", 0],
+        [".final-cta-content", "up", 0],
+        [".contact-figure", "left", 0],
+        [".contact-main", "right", 0],
+        [".newsletter-inner", "up", 0],
+        [".footer-top", "up", 0]
+    ];
+
+    const targets = [];
+    groups.forEach(([selector, direction, stagger]) => {
+        document.querySelectorAll(selector).forEach((element, i) => {
+            element.dataset.fade = direction;
+            element.style.setProperty("--fade-delay", `${i * stagger}s`);
+            targets.push(element);
+        });
+    });
+    document.documentElement.classList.add("fade-ready");
+
+    // Shown once ~12% is on screen; fades back out as it leaves
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            entry.target.classList.toggle("is-shown", entry.intersectionRatio >= 0.12);
+        });
+    }, { threshold: [0, 0.12], rootMargin: "0px 0px -6% 0px" });
+    targets.forEach((element) => observer.observe(element));
+})();

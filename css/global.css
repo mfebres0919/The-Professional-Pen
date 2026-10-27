@@ -779,6 +779,42 @@ html.menu-open {
     }
 }
 
+/* ---------- Scroll fades ----------
+   script.js tags section content with data-fade and adds .fade-ready to
+   <html> (so nothing is hidden if JavaScript doesn't run). Content fades and
+   rises in as it enters the screen and fades back out as it leaves.
+   filter: opacity() is used instead of opacity so contrast checkers such as
+   WAVE don't read not-yet-shown text as invisible. */
+.fade-ready [data-fade] {
+    filter: opacity(0);
+    transform: translateY(2.25rem);
+    transition:
+        filter 0.7s ease,
+        transform 0.8s var(--ease);
+    transition-delay: var(--fade-delay, 0s);
+}
+
+.fade-ready [data-fade="left"] {
+    transform: translateX(-2.25rem);
+}
+
+.fade-ready [data-fade="right"] {
+    transform: translateX(2.25rem);
+}
+
+.fade-ready [data-fade].is-shown {
+    filter: none;
+    transform: none;
+}
+
+/* Phones: everything rises in; sideways slides would poke past the screen edge */
+@media (max-width: 47.99rem) {
+    .fade-ready [data-fade="left"],
+    .fade-ready [data-fade="right"] {
+        transform: translateY(2.25rem);
+    }
+}
+
 /* ---------- Back to top ---------- */
 .back-to-top {
     position: fixed;
