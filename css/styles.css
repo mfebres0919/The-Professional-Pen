@@ -2390,9 +2390,10 @@
 }
 
 /* ==========================================================================
-   Final CTA: headline and buttons on a light background; the "Hollywood is
-   waiting" image (transparent sky) runs edge to edge along the bottom, its
-   black base meeting the black wave that opens the contact section.
+   Final CTA: the label and "They made it. Now" in black on the light
+   background; below a light wave, "it's your turn.", the text and buttons sit
+   in white over the darkened "Hollywood is waiting" image. The headline is
+   one hidden <h2> for screen readers; the two visible lines are decorative.
    ========================================================================== */
 .final-cta {
     position: relative;
@@ -2400,28 +2401,76 @@
     background-color: var(--color-light);
 }
 
-.final-cta .divider {
+.final-cta > .divider {
+    z-index: 1;
+}
+
+.final-cta-top {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: calc(clamp(2.5rem, 7vw, 6rem) + 2.5rem);
+    padding-bottom: 0.5rem;
+    text-align: center;
+}
+
+.final-cta-line {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(3rem, 8.5vw, 7rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+}
+
+.final-cta-top .final-cta-line {
+    margin-top: 1.25rem;
+}
+
+.final-cta-line--light {
+    color: var(--color-white);
+}
+
+/* Dark stage: image fills it, tinted so white text stays readable */
+.final-cta-stage {
+    position: relative;
+    overflow: hidden;
+    color: var(--color-white);
+    background-color: var(--color-black);
+}
+
+.final-cta-image {
+    position: absolute;
+    inset: 0;
+}
+
+.final-cta-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+.final-cta-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.55) 45%, rgba(0, 0, 0, 0.82));
+}
+
+.final-cta-stage .divider {
     z-index: 1;
 }
 
 .final-cta-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: calc(clamp(2.5rem, 7vw, 6rem) + 2.5rem);
+    padding-block: calc(clamp(2.5rem, 7vw, 6rem) - 0.5rem) calc(clamp(2.5rem, 7vw, 6rem) + 3rem);
     text-align: center;
-}
-
-.final-cta-title {
-    max-width: 16ch;
-    margin-top: 1.25rem;
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(3rem, 8.5vw, 7rem);
-    line-height: 0.9;
-    text-transform: uppercase;
 }
 
 .final-cta-text {
@@ -2429,7 +2478,7 @@
     margin-top: 1.5rem;
     font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
     line-height: 1.6;
-    color: var(--color-text-dark);
+    color: var(--color-white);
 }
 
 .final-cta-actions {
@@ -2445,44 +2494,11 @@
     margin-top: 1.25rem;
     font-family: var(--font-mono);
     font-size: 0.875rem;
-    color: var(--color-text-dark);
+    color: var(--color-text-muted);
 }
 
-.final-cta .btn-primary:hover,
-.final-cta .btn-primary:focus-visible {
-    border-color: var(--color-black);
-}
-
-.final-cta :focus-visible {
+.final-cta-top :focus-visible {
     outline-color: var(--color-black);
-}
-
-/* Black outline button for light backgrounds; fills black */
-.btn-outline-ink {
-    color: var(--color-black);
-    background-color: transparent;
-    border-color: var(--color-black);
-    transition: color 0.45s var(--ease);
-}
-
-.btn-outline-ink::before {
-    background-color: var(--color-black);
-}
-
-.btn-outline-ink:hover,
-.btn-outline-ink:focus-visible {
-    color: var(--color-white);
-}
-
-.final-cta-image {
-    display: block;
-    margin-top: clamp(1rem, 3vw, 2rem);
-}
-
-.final-cta-image img {
-    display: block;
-    width: 100%;
-    height: auto;
 }
 
 @media (min-width: 30rem) {
@@ -2495,13 +2511,20 @@
     }
 }
 
+@media (min-width: 64rem) {
+    .final-cta-content {
+        min-height: 36rem;
+        justify-content: center;
+    }
+}
+
 /* ==========================================================================
    Contact: the team cut-out on two green circles (a soft one behind, a solid
    brand-green one in front of it), general inquiry form on the right.
    ========================================================================== */
 .contact {
     position: relative;
-    padding: calc(clamp(2.5rem, 7vw, 6rem) + clamp(2rem, 4vw, 3rem)) 0 clamp(4rem, 8vw, 7rem);
+    padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(4rem, 8vw, 7rem);
     overflow: hidden;
     color: var(--color-black);
     background-color: var(--color-light);

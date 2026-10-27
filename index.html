@@ -652,8 +652,9 @@
             </div>
         </section>
 
-        <!-- ===== Final CTA: closing pitch on a light background, with the
-             "Hollywood is waiting" creators image running edge to edge below ===== -->
+        <!-- ===== Final CTA: "They made it. Now" in black on the light background, then
+             "it's your turn." and the buttons in white over the darkened
+             "Hollywood is waiting" image ===== -->
         <section class="final-cta" id="chat" aria-labelledby="final-cta-title">
             <svg class="divider divider--white" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
                 <g fill="currentColor">
@@ -663,35 +664,50 @@
                 </g>
             </svg>
 
-            <div class="container final-cta-content">
+            <h2 class="visually-hidden" id="final-cta-title">They made it. Now it&rsquo;s your turn.</h2>
+
+            <div class="container final-cta-top">
                 <p class="slugline slugline--center slugline--on-light">SMASH CUT TO: YOUR NEXT DRAFT</p>
-                <h2 class="final-cta-title" id="final-cta-title">They made it. Now it&rsquo;s <span class="title-mark">your turn.<svg class="title-underline" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 16C58 7 132 4 200 8c34 2 64 5 92 10" pathLength="1"/></svg></span></h2>
-                <p class="final-cta-text">These writers didn&rsquo;t wait to be discovered. They built, pitched and developed their way in. You can too, with the right game plan. We gotchu.</p>
-                <div class="final-cta-actions">
-                    <a class="btn btn-primary" href="https://calendly.com/kick-off-jam/chat" target="_blank" rel="noopener">Book your free 15-min chat<span class="visually-hidden"> (opens in a new tab)</span></a>
-                    <a class="btn btn-outline-ink" href="#offers">Explore our offers</a>
-                </div>
-                <p class="final-cta-note">No pressure, no pitch. Just a plan for your script.</p>
+                <p class="final-cta-line" aria-hidden="true">They made it. Now</p>
             </div>
 
-            <picture class="final-cta-image">
-                <source type="image/webp" media="(min-width: 48rem)" srcset="images/cta/hollywood.webp">
-                <source type="image/webp" srcset="images/cta/hollywood-m.webp">
-                <source media="(min-width: 48rem)" srcset="images/cta/hollywood.png">
-                <img src="images/cta/hollywood-m.png" alt="Shonda Rhimes, Spike Lee, Ava DuVernay, Jordan Peele and Ryan Coogler" width="1280" height="720" loading="lazy" decoding="async">
-            </picture>
+            <div class="final-cta-stage">
+                <picture class="final-cta-image">
+                    <source type="image/webp" media="(min-width: 48rem)" srcset="images/cta/hollywood.webp">
+                    <source type="image/webp" srcset="images/cta/hollywood-m.webp">
+                    <source media="(min-width: 48rem)" srcset="images/cta/hollywood.png">
+                    <img src="images/cta/hollywood-m.png" alt="Shonda Rhimes, Spike Lee, Ava DuVernay, Jordan Peele and Ryan Coogler" width="1280" height="637" loading="lazy" decoding="async">
+                </picture>
+                <svg class="divider divider--light" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                    <g fill="currentColor">
+                        <path d="M0 0v95c51-40 134.5-65.3 238-55 65 6.5 103.8 14.8 141 21.4C416.3 78 452 93 511 93s99.5-20.5 138.6-41c39.1-10.5 76.9-21 130.4-21 113 0 136.8 2.8 220 28V0H0Z" opacity=".5"/>
+                        <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z" opacity=".5"/>
+                        <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z"/>
+                    </g>
+                </svg>
+
+                <div class="container final-cta-content">
+                    <p class="final-cta-line final-cta-line--light" aria-hidden="true">it&rsquo;s <span class="title-mark">your turn.<svg class="title-underline" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M4 16C58 7 132 4 200 8c34 2 64 5 92 10" pathLength="1"/></svg></span></p>
+                    <p class="final-cta-text">These writers didn&rsquo;t wait to be discovered. They built, pitched and developed their way in. You can too, with the right game plan. We gotchu.</p>
+                    <div class="final-cta-actions">
+                        <a class="btn btn-primary" href="https://calendly.com/kick-off-jam/chat" target="_blank" rel="noopener">Book your free 15-min chat<span class="visually-hidden"> (opens in a new tab)</span></a>
+                        <a class="btn btn-secondary" href="#offers">Explore our offers</a>
+                    </div>
+                    <p class="final-cta-note">No pressure, no pitch. Just a plan for your script.</p>
+                </div>
+                <svg class="divider divider--bottom divider--light" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                    <g fill="currentColor">
+                        <path d="M0 0v95c51-40 134.5-65.3 238-55 65 6.5 103.8 14.8 141 21.4C416.3 78 452 93 511 93s99.5-20.5 138.6-41c39.1-10.5 76.9-21 130.4-21 113 0 136.8 2.8 220 28V0H0Z" opacity=".5"/>
+                        <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z" opacity=".5"/>
+                        <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z"/>
+                    </g>
+                </svg>
+            </div>
         </section>
 
         <!-- ===== Contact: the team on two green circles, general inquiry form beside it.
              The form opens the visitor's email app with the message filled in (script.js) ===== -->
         <section class="contact" id="contact" aria-labelledby="contact-title">
-            <svg class="divider" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-                <g fill="currentColor">
-                    <path d="M0 0v95c51-40 134.5-65.3 238-55 65 6.5 103.8 14.8 141 21.4C416.3 78 452 93 511 93s99.5-20.5 138.6-41c39.1-10.5 76.9-21 130.4-21 113 0 136.8 2.8 220 28V0H0Z" opacity=".5"/>
-                    <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z" opacity=".5"/>
-                    <path d="M0 0v95C51 55 134.5 9.7 238 20c65 6.5 103.8 24.8 141 41.4C416.3 68 452 73 511 73s99.5-10.5 138.6-21c39.1-20.5 76.9-41 130.4-41 113 0 136.8 22.8 220 48V0H0Z"/>
-                </g>
-            </svg>
 
             <div class="container contact-inner">
                 <figure class="contact-figure">
